@@ -1,12 +1,41 @@
----
-layout: default
-title: COHORTE Project web site
----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>COHORTE Project web site | isandlatech website</title>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/isandlatech.css" rel="stylesheet">
+  </head>
+  <body>
 
-{% include page_header.html %}
 
 <!-- ***************** Splash + nav ******************* -->
-{% include navbar.html %}
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand nav-link" href="#top"><img src="resources/images/isandlatech-logo-sm-carre.png"/> </a>
+    </div> <!-- /.navbar-header -->
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#features" class="nav-link">Products</a></li>
+        <li><a href="#tour-head" class="nav-link">Services</a></li>
+        <li><a href="#faqs" class="nav-link">Team</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div> <!-- /.navbar-collapse -->
+  </div> <!-- /.container -->
+</nav> <!-- /.navbar -->
+
+
 
  <div id="top" class="jumbotron">
       <div class="container">
@@ -201,5 +230,9 @@ title: COHORTE Project web site
         link.closest(".navbar").find(".navbar-toggle:not(.collapsed)").click();
       });
     </script>
-{% include page_footer.html %}
+	
+
+	</body>
+</html>
+
 
