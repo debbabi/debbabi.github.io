@@ -4,7 +4,7 @@ title: Documentation  - v.1.0
 ---
 
 
-## Getting started
+## Getting started tutorials
 
 <!--div class="container">
   <div class="row">
@@ -25,10 +25,14 @@ title: Documentation  - v.1.0
 
 Some resources to get started quickly:
 
-<div class="menu-choices">      
-      <a style="left: 0%;" class="menu-choice"
-      href="{{ site.baseurl }}/docs/1.x/tutorials">Tutorials</a>
-</div>
+ * [Getting Started Tutorial](./tutorials/getting-started)
+    <br/>Install and run a COHORTE application in 10 munites.
+
+ * [Temper Tutorial](./tutorials/temper) 
+    <br/>Highlighting the multi-language and distribution features of COHORTE in a simple, yet functional temperature monitoring application.
+
+ * [Spellcheker Tutorial](./tutorials/spellchecker) 
+    <br/>An introductory tutorial for Java and Python developers. It highlights the Service-oriented Component-based approach of the COHORTE platform.
 
 ## Reference documentation
 
