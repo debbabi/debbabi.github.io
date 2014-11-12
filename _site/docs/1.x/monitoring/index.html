@@ -18,10 +18,10 @@
     rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
-    <link href="/resources/css/2/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/resources/css/2/cohorte.css" rel="stylesheet">
+    <link href="/resources/css/cohorte.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,16 +33,8 @@
 </head>
 <body>
 
-<div class="darkstrip"></div>
-
-<div class="darkbluetopbar">
-  <div class="container" style="height: 100%">
-    <div class="navbar-wrap">
-      <div class="container" style="position: relative; height: 100%;">
-        <div class="cohorte-logo">
-          <a href="/index.html"><img src="/resources/images/cohorte-logo-sm.png" alt="Cohorte logo" /></a>
-        </div>
-        <nav class="navbar navbar-fixed-top" role="navigation">
+  <!-- Navigation -->
+  <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -75,22 +67,21 @@
 <ul class="nav">          
         
 </ul>    
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="midbluebar">
+
+
+<div class="page-title-style">
   <div class="container">
     <h1 id="page-title">Documentation | Monitoring</h1>
   </div>
 </div>
 
+
 <div class="page-container">
   <div class="container" style="min-height: 540px;">
-    <!-- <div class="row"> -->
-      <!-- <div class="span12"> -->
-          <div class="main-page-column">
+    <div class="row">
+      <div class="span12">
+          <div class="main-page-column" style="width: 75%;">
             
             <p><a href="../../../">Home</a> &gt; <a href="../">Documentation</a></p>
 
@@ -566,10 +557,13 @@
             </div>
           </div>
           <div style="clear:both"></div>
-      <!-- </div> -->
-    <!-- </div> -->
+      </div>
+    </div>
   </div>
 </div>
+
+
+
 
 
 
@@ -627,6 +621,39 @@
         interval: 5000 //changes the speed
     })
     </script>
+
+    
+    <!-- table of contents JS -->
+    <script src="/resources/js/toc.js" type="text/javascript" ></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+        function moveScroller() {
+          if ($(".sidebar").length == 0)
+            return;
+          var a = function() {
+            var topOfScroll = $(window).scrollTop();
+            var topOfSidebar = $(".sidebar").offset().top;
+            var sidebarInner = $(".sidebar-inner");
+            var bottomOfSidebarInner = $(".sidebar-inner").offset().top + $(".sidebar-inner").outerHeight();
+            var topOfFooter = $(".footer").offset().top - 10;
+            var footerHeight = $(".footer").outerHeight();
+            if (topOfScroll > topOfSidebar) {
+              if (bottomOfSidebarInner > topOfFooter) {
+                sidebarInner.css({position:"fixed",bottom:footerHeight,top:""});
+              } else {
+                sidebarInner.css({position:"fixed",top:"10px",bottom:""});
+              }
+            } else {
+              sidebarInner.css({position:"relative",top:""});
+            }
+          };
+          $(window).scroll(a);a()
+        }
+        moveScroller();
+      })
+    </script>
+    
 
 	<script src="/resources/js/2/cohorte.js" type="text/javascript"></script>
 

@@ -18,10 +18,10 @@
     rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
-    <link href="/resources/css/2/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/resources/css/2/cohorte.css" rel="stylesheet">
+    <link href="/resources/css/cohorte.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,7 +82,8 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('/resources/images/alpes.jpg');"></div>
+                <!--<div class="fill" style="background-image:url('/resources/images/alpes.jpg');"></div>-->
+                <div class="fill" style="background-color: #b84d45; background-image:url('/resources/images/bg.png'); "></div>
                 <div class="container">
                  <div class="row">
                     <div class="carousel-caption">
@@ -92,7 +93,7 @@
                     <p>COHORTE is a platform for developing and rolling out robust and reliable software. Software produced with COHORTE has a high level of robustness and reliability since its is made up of a range of components and services protected from one another by isolation containers. </p>
                     <br/>
                     <br/>
-                    <a class="btn btn-info" href="/docs/1.x/"><b>Documentation</b></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-success" href="/docs/1.x/"><b>Documentation</b></a>&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="btn btn-danger" href="/downloads/"><b>Downloads</b></a>                    
                     </div>
                  </div>
@@ -100,7 +101,7 @@
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                 <div class="fill" style="background-image:url('/resources/images/alpes.jpg');"></div>                
                  <div class="container">
                  <div class="row">
                  <div class="carousel-caption">
@@ -111,7 +112,8 @@
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <!--<div class="fill" style="background-image:url('/resources/images/alpes.jpg');"></div>-->
+                <div class="fill" style="background-color: #b84d45; background-image:url('/resources/images/bg.png'); "></div>
                 <div class="container">
                   <div class="row">
                  <div class="carousel-caption">
@@ -132,8 +134,8 @@
 
     </header>  
 
-<!-- getting started steps -->
-
+  <!-- getting started steps -->
+  
 <div class="getting-started-box">
   <div class="container">
     <div class="row">
@@ -167,16 +169,10 @@
 	</ul>
 	<br/>
 	<br/>
-	<!--<a id="getting-started-step2" class="float-left" > Previous </a>-->
-    <a id="getting-started-step1-btn" class="btn float-right"> Next > </a>
+
 	
 </div>
-
-<script>
-$( "getting-started-step1-btn" ).click(function() {
-  console.log("clicked on next..");
-});
-</script></div>
+</div>
         <div id="hidden-getting-started-step-2"><img src="/resources/images/getting-started/getting-started-step2.png" class="getting-started-step-image"/>
 
 <div>
@@ -189,8 +185,7 @@ $( "getting-started-step1-btn" ).click(function() {
 		</ul>
 		<br/>
 		<br/>
-		<a id="getting-started-step2" class="float-left" > Previous </a>
-    	<a id="getting-started-step1-btn" class="btn float-right"> Next > </a>
+		
 </div>
 </div>
         <div id="hidden-getting-started-step-3">
@@ -202,15 +197,7 @@ $( "getting-started-step1-btn" ).click(function() {
 			<li>You can specify that any Node with a given "name" should have an instance of a one particular component</li>
 			<li>You can have multiples isolates in the same node to seperate between components</li>
 		</ul>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-<a id="getting-started-step2" class="float-left" > Previous </a>
-<a id="getting-started-step1-btn" class="btn float-right"> Next > </a></div>
+</div>
         <div id="hidden-getting-started-step-4"><img src="/resources/images/getting-started/getting-started-step3.png" class="getting-started-step-image"/>
 
 		<h3>Prepare your deployment environment</h3>
@@ -221,10 +208,7 @@ $( "getting-started-step1-btn" ).click(function() {
 		</ul>
 		<br/>
 		<br/>
-		<a id="getting-started-step2" class="float-left" > Previous </a>
-    	<a id="getting-started-step1-btn" class="btn float-right"> Next > </a>
-</div>
-</div>
+		</div>
         <div id="hidden-getting-started-step-5"><img src="/resources/images/getting-started/getting-started-step5.png" class="getting-started-step-image"/>
 
 <h3>Run your application</h3>
@@ -237,10 +221,7 @@ $( "getting-started-step1-btn" ).click(function() {
 	<li>Other nodes can be added dynamically. If it's name is referenced on the composition configuration, the Top Composer will order it to instanciate the related components.
 	</ul>
 	<br/>
-	<br/>
-	<br/>
-<a id="getting-started-step2" class="float-left" > Previous </a>
-<a id="getting-started-step1-btn" class="float-right"> Getting started tutorials > </a>
+
 
 
 
@@ -248,10 +229,10 @@ $( "getting-started-step1-btn" ).click(function() {
       </div>
     </div> <!-- /.row -->
   </div> <!-- /.container -->
-</div> <!-- ./getting-started-box -->
+</div> <!-- ./getting-started-box -->  
 
-
-<div class="key-points-box">
+  <!-- key points -->
+  <div class="key-points-box">
   <div class="container">
     <div class="key-points-container-main">
       <div class="row">
@@ -321,14 +302,12 @@ $( "getting-started-step1-btn" ).click(function() {
       </div>
       <div class="row">
         <div class="key-point-learn-more">
-        <a class="btn btn-info " href="/docs/1.x/what-is-cohorte"><b>Learn More</b></a>&nbsp;
+        <a class="btn btn-danger " href="/docs/1.x/what-is-cohorte"><b>Learn More</b></a>&nbsp;
         </div>
       </div>
     </div>
   </div> <!-- /.container -->
-</div> <!-- /.key-points -->
-
-
+</div> <!-- /.key-points -->  
 
 
 
@@ -385,6 +364,39 @@ $( "getting-started-step1-btn" ).click(function() {
         interval: 5000 //changes the speed
     })
     </script>
+
+    
+    <!-- table of contents JS -->
+    <script src="/resources/js/toc.js" type="text/javascript" ></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+        function moveScroller() {
+          if ($(".sidebar").length == 0)
+            return;
+          var a = function() {
+            var topOfScroll = $(window).scrollTop();
+            var topOfSidebar = $(".sidebar").offset().top;
+            var sidebarInner = $(".sidebar-inner");
+            var bottomOfSidebarInner = $(".sidebar-inner").offset().top + $(".sidebar-inner").outerHeight();
+            var topOfFooter = $(".footer").offset().top - 10;
+            var footerHeight = $(".footer").outerHeight();
+            if (topOfScroll > topOfSidebar) {
+              if (bottomOfSidebarInner > topOfFooter) {
+                sidebarInner.css({position:"fixed",bottom:footerHeight,top:""});
+              } else {
+                sidebarInner.css({position:"fixed",top:"10px",bottom:""});
+              }
+            } else {
+              sidebarInner.css({position:"relative",top:""});
+            }
+          };
+          $(window).scroll(a);a()
+        }
+        moveScroller();
+      })
+    </script>
+    
 
 	<script src="/resources/js/2/cohorte.js" type="text/javascript"></script>
 

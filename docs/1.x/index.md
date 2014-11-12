@@ -1,6 +1,6 @@
 ---
 layout: page-full-width
-title: Learn
+title: Documentation  - v.1.0
 ---
 
 
