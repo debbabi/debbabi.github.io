@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="isandlatech">
+    
+    <title>Getting started tutorial | Cohorte Project</title>
+
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=fr" rel=
+    "stylesheet">
+    <link href=
+    "//fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"
+    rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/resources/css/2/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/resources/css/2/cohorte.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
+        <div class="cohorte-logo">
+          <a href="/index.html"><img src="/resources/images/cohorte-logo-sm.png" alt="Cohorte logo" /></a>
+        </div>
+        <nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/resources/images/cohorte-logo.png"></img></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/docs/1.x/">Documentation</a></li>
+		      <li><a href="/downloads/">Downloads</a></li>
+		      <li><a href="/community/">Community</a></li>
+		      <li><a href="/news">News</a></li>
+		      <!--li><a href="/contribute/">Contribute</a></li-->
+		      <li>
+		        <a href="http://github.com/isandlatech/"><img src="/resources/images/github-logo-black.png" alt="GitHub Logo" /></a>		        
+		      </li>  
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<ul class="nav">          
+        
+</ul>    
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Getting started tutorial</h1>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <p><a href="../../../../">Home</a> &gt; <a href="../../">Documentation</a> &gt; <a href="../">Tutorials</a></p>
+
+<h2 id="getting-started-tutorial">Getting started tutorial</h2>
+
+<h3 id="overview">Overview</h3>
+
+<p>As a COHORTE user, you need to have Java ( &gt;= 1.6 ) and Python ( &gt;= 3 ) installed on your system. Next, you need to <a href="/docs/1.x/setup">download and install COHORTE on your system</a>.</p>
+
+<p>The objective of this getting started tutorial is to get you familiar with the COHORTE concept as quickly as possible. There is no need to start coding at this step. You found other advanced tutorial in the <a href="/docs/1.x/tutorials">tutorials section of the documentation page</a>.
+ This getting started tutorial is divised in four steps:</p>
+
+<ul>
+  <li><strong><a href="#step1">STEP 1</a></strong>: creating a simple application on one node, but two seperate isolates. </li>
+  <li><strong><a href="#step2">STEP 2</a></strong>: using two distributed nodes to host the same application (without changing the components implementation code).</li>
+  <li><strong><a href="#step3">STEP 3</a></strong>: using a mixture of Java and Python components.</li>
+  <li><strong><a href="#step4">STEP 4</a></strong>: crash-test</li>
+</ul>
+
+<hr />
+
+<h3 id="a-namestep1astep-1"><a name="step1"></a>STEP 1</h3>
+
+<ul>
+  <li>Open a new terminal and type the following command on your working directory:</li>
+</ul>
+
+<pre>
+$ <b>cohorte-create-node</b> node1
+</pre>
+
+<p>This command will create a new directory named <code>node1</code> containing an executable <code>run</code> (which launches the created COHORTE node) and two folders <code>conf</code> (contains configuration files) and <code>repo</code> (contains components bundles).</p>
+
+<ul>
+  <li>Download the bundle of this tutorial’s components (no need to implement them in this getting started tutorial). </li>
+</ul>
+
+<p>
+<div id="download_hello_demo_python_snapshot"></div> 
+</p>
+
+<ul>
+  <li>Put the extracted <code>hello</code> directory into <code>node1/repo</code> directory.<br />
+    <ul>
+      <li>The <code>hello</code> package contains four components (implemented in Python): <br />
+        <ul>
+          <li><strong>component_A</strong>, <strong>component_B</strong>, and <strong>component_C</strong>: these components implements the HELLO service which has only one method <code>say_hello</code>. </li>
+          <li><strong>hello_components</strong>: this component provides a web interface on which the list of discovered components implementing the HELLO service are listed (we show the message returned by each component when calling their <code>say_hello</code> method).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>The following picture depicts the web interface provided by the <strong>hello_components</strong> component and the underlying architecture of the application.</p>
+
+<p><img src="getting-started-img-3.png" alt="Step 1 final result" /></p>
+
+<ul>
+  <li>In this first step of the tutorial, we want to instantiate only the components <strong>HC</strong> (hello_components), <strong>A</strong> (component_A) and <strong>B</strong> (component_B). In addition, we want to seperate between HC component and the other components providing the HELLO service (which can contain third-party code). COHORTE supports this separation by using <strong>Isolates</strong>. Isolates are a seperate process with all the needed runtime infrastructure allowing the execution of the managed components.
+ <br /><br />The following picture depicts the desired resilient architecture. If one of the components providing the HELLO service fails, there will be no impact on the HC component! </li>
+</ul>
+
+<p><img src="getting-started-img-1.png" alt="Step 1" /></p>
+
+<ul>
+  <li>In order to have this deployment plan, you should edit the <code>node1/conf/autorun_conf.js</code> to specify the set of components that will be instantiated on each isolate.</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+	<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;default-application&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;root&quot;</span> <span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;default-application-composition&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;components&quot;</span> <span class="p">:</span> <span class="p">[</span> 
+			<span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;HC&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello_components_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;web&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_a_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_b_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components&quot;</span>
+			<span class="p">}</span>
+		<span class="p">]</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<ul>
+  <li><strong>It’s done!</strong> all what’s you need to do now is to start <code>node1</code> node as follow:</li>
+</ul>
+
+<pre>
+$ ./<b>run</b> -t
+</pre>
+
+<p>You will notice some log outputs, when all is Ok, type the <code>load</code> command to start the application’s composition:</p>
+
+<pre>
+$ <b>load</b>
+<div style="font-size:70%">
+Started composition: default-application -&gt; b764f5eb-812c-4a2a-83f8-b3effa1e86ce
+</div>
+</pre>
+
+<ul>
+  <li>To test your application, you need to know on which http port the <code>web</code> isolate is listening (as the HC component publish its web page using the same HTTP server as its isolate container). Type the <code>http</code> command to have this information.</li>
+</ul>
+
+<pre>
+$ <b>http</b>
+<div style="font-size:70%">
++------------+--------------------------------------+-----------+--------------------------------------+-------+
+|    Name    |                 UID                  | Node Name |               Node UID               | HTTP  |
++============+======================================+===========+======================================+=======+
+| components | 9fa3c812-64b0-499e-8b65-6ac5fe8bcf02 | node1     | 71c96fe6-5ce2-43c9-bafc-6f0905d8cf74 | 63625 |
++------------+--------------------------------------+-----------+--------------------------------------+-------+
+| web        | ac0dd576-a7fb-4c34-b7ab-b68a810c38bc | node1     | 71c96fe6-5ce2-43c9-bafc-6f0905d8cf74 | <span style="color:red">63609</span> |
++------------+--------------------------------------+-----------+--------------------------------------+-------+
+</div>
+</pre>
+
+<p>In this case, its <code>63609</code>. Launch a web browser with this address to start the web interface: <code>http://localhost:63609/hello</code>.</p>
+
+<div class="note">
+<span class="note-title">Note</span>
+<p class="note-content">
+You can fix the http port to use for your application using configuration files (see <a href="/docs/1.x/startup">startup section of the documentation page</a>).
+</p>
+</div>
+
+<ul>
+  <li>To stop COHORTE, type the <code>quit</code> command on the terminal.</li>
+</ul>
+
+<hr />
+
+<h3 id="a-namestep2step-2"><a name="step2">Step 2</a></h3>
+
+<p>In this second step, we will distribute our components among two nodes (which can be physically distributed on a local network area - or via Internet using an XMPP server).</p>
+
+<ul>
+  <li>Lets have the same architecture as the first step, and we add a new instance of component_C that should be deployed on a second node. </li>
+</ul>
+
+<p>Here is the new depoyment configuration for this case. </p>
+
+<p><img src="getting-started-img-2.png" alt="Step 2" /></p>
+
+<p>COHORTE will instantiate the HC, A, and B components on Top Composer node. The component C is instantiate on each other node having the name “node2”. This node can be located on another machine than the one executing the Top Composer.</p>
+
+<p>In order to discover the nodes belonging to the same application, all the nodes should have the same <em>application-ID</em>. The following commands creates two nodes (node1 and node2) with the same <em>application-ID</em> <code>hello-application-step2</code>:</p>
+
+<pre>
+$ <b>cohorte-create-node</b> node1 hello-application-step2
+$ <b>cohorte-create-node</b> node2 hello-application-step2
+</pre>
+
+<ul>
+  <li>Copy <code>hello</code> package used in the first step into the `repo directories of the two newly created nodes (you can also make symbolic links to avoid having two copies if your nodes are on the same machine).</li>
+  <li>Update <code>autorun_conf.js</code> file located on <code>node1/conf</code> as follow:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+	<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello-application-step2&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;root&quot;</span> <span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello-application-step2-composition&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;components&quot;</span> <span class="p">:</span> <span class="p">[</span> 
+			<span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;HC&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello_components_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;web&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_a_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_b_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_c_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components2&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;node2&quot;</span>
+			<span class="p">}</span>
+		<span class="p">]</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<div class="note">
+<span class="note-title">Note</span>
+<p class="note-content">
+The C component is specified to be in another isolate named "components2", not "components". In the actual version of COHORTE you can not have two different isolates with the same name in two different nodes!
+</p>
+</div>
+
+<ul>
+  <li>
+    <p>Remove the generated <code>autorun_conf.js</code> file located on <code>node2/conf</code>. Indeed, <code>node1</code> will be considered as <strong>Top Composer</strong>, it will controls the application’s composition in all the participating nodes.</p>
+  </li>
+  <li>
+    <p>Go to <code>node1</code> directory and start it as a <strong>Top Composer</strong>:</p>
+  </li>
+</ul>
+
+<pre>
+node1$ ./<b>run</b> -t
+</pre>
+
+<ul>
+  <li>When started, type <code>load</code> command to start the application’s composition (instantiation). </li>
+  <li>
+    <p>You can test this first part of the application as your <code>hello_components</code> component is instantiated in this node (<em>web isolates</em>). Follow the same steps as in the first part of this tutorial to find the http port and to launch the web interface. You notice that there is only two components A and B. This is because C component is specified to be instantiated on <code>node2</code> which is not yet started.</p>
+  </li>
+  <li>In a separate terminal, start <code>node2</code> with a different <em>http</em> and <em>remote shell</em> ports (to avoid conflict with the first node - as they are hosted on the same physical machine):</li>
+</ul>
+
+<pre>
+node2$ ./<b>run</b> 9000 9001
+</pre>
+
+<p>Notice that we have started this node without the <code>-t</code> option. It is not a <em>Top Composer</em>, but just a participating node.</p>
+
+<ul>
+  <li>Refresh the web interface of <code>hello_components</code> component. You will notice that the C component is detected and used by the HC component even it was deployed in a seperate remote node.</li>
+</ul>
+
+<hr />
+
+<h3 id="a-namestep3step-3"><a name="step3">Step 3</a></h3>
+
+<p>All the components used until now are implemented in Python (using <a href="/docs/1.x/components">iPOPO component-based framework</a>). We will extend our application by introducing a new component that implements the HELLO service in Java (component_D). </p>
+
+<ul>
+  <li>Stop the running nodes of the previous step (use the command <code>quit</code>).</li>
+  <li>Donwload the bundle (jar file) containing the implementation of the D component.</li>
+</ul>
+
+<p>
+<div id="download_hello_demo_java_snapshot"></div> 
+</p>
+
+<ul>
+  <li>Put the extracted <code>jar</code> file into the <code>repo</code> folder of <code>node2</code> node. </li>
+  <li>Update the <code>autorun_conf.js</code> file located on <code>node1/conf</code> to add this new component D. It should be instantiated on <code>node2</code>.</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+	<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello-application-step2&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;root&quot;</span> <span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello-application-step2-composition&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;components&quot;</span> <span class="p">:</span> <span class="p">[</span> 
+			<span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;HC&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;hello_components_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;web&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_a_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_b_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_c_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components2&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;node2&quot;</span>
+			<span class="p">},</span> <span class="p">{</span>
+				<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;component_d_factory&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;components3&quot;</span><span class="p">,</span>
+				<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;node2&quot;</span>
+			<span class="p">}</span>
+		<span class="p">]</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p><img src="getting-started-img-4.png" alt="Step 2" /></p>
+
+<ul>
+  <li>
+    <p>As you notice, components C and D should be deployed on two sperate isolates (<em>components2</em> and <em>components3</em>) as are implemented in two different languages.</p>
+  </li>
+  <li>start the two nodes as explained in the previous step (<em>node1</em> as <em>Top Composer</em> and <em>node2</em> as a simple node with different http and remote shell ports).</li>
+  <li>Test the web interface. You will find that the <strong>D</strong> component which is implemented in Java is also used by the <strong>HC</strong> component, implemented in Python. </li>
+</ul>
+
+<hr />
+
+<h3 id="a-namestep4step-4"><a name="step4">Step 4</a></h3>
+
+<p>crash-test! 
+Work in progress.. </p>
+
+<p><a href="../../../../">Home</a> &gt; <a href="../../">Documentation</a> &gt; <a href="../">Tutorials</a></p>
+
+<script>
+    function loadLatestSnapshots() {
+        $.getJSON( "http://cohorte.github.io/latest_demos_hello.json", function( data ) {            
+            frame1 = "<a class='btn' href='" + data["snapshots"]["hello-python-distribution"]["files"]["zip"] + "'>hello_components.zip</a>"
+            frame2 = "<a class='btn' href='" + data["snapshots"]["hello"]["files"]["jar"] + "'>hello_component_java.zip</a>"            
+            $('#download_hello_demo_python_snapshot').html(frame1);
+            $('#download_hello_demo_java_snapshot').html(frame2);
+        });
+    }
+    $(document).ready(function() {        
+        loadLatestSnapshots();
+    });
+</script>
+
+
+            <br/>
+            <br/>
+            <br/>
+            
+            <a href="../" class="btn float-left" title="Previous page"> Previous </a>
+            
+            
+            <a href="../spellchecker" class="btn float-right" title="Next page"> Next </a>
+            
+            <hr/>
+            <br/>
+            <br/>
+                
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+
+
+
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>Documentation</h5></li>
+			<li><a href="/documentation/what-is-cohorte.html">What is COHORTE?</a></li>
+			<li><a href="/documentation/getting-started.html">Getting Started</a></li>
+			<li><a href="/documentation/tutorials.html">Tutorials</a></li>
+			<li><a href="/documentation/demonstrations.html">Demonstrations</a></li>
+			<li><a href="/documentation/publications.html">Articles & Publications</a></li>
+			<li><a href="/documentation/guide.html">Reference Guide</a></li>
+		</ul>
+		<ul>
+			<li><h5>Downloads</h5></li>
+			<li><a href="/download/">Stable Release</a></li>
+			<li><a href="/download/.html">Development Release</a></li>
+		</ul>
+		<ul>
+			<li><h5>Community</h5></li>
+			<li><a href="/community/index.html#mailing_lists">Mailing lists</a></li>
+			<li><a href="/community/index.html#github">GitHub</a></li>
+		</ul>
+		<ul>
+			<li><h5>COHORTE</h5></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/news">News Archive</a></li>
+			<li><a href="/license.html">COHORTE License</a></li>
+		</ul>
+		</div>
+		<div class="container">
+		<div class="copyright">
+			<a style="float: left; margin-right: 8px;" href="http://isandlatech.com"><img src="/resources/images/isandlatech-logo-sm-carre.png" alt="isandlaTech logo" /></a>
+			<p style="float: left;"><br/>Copyright &copy; 2011-<span class="current-year"></span> isandla<i>Tech</i> S.A.R.L<br/>3 chemin du vieux chêne. 38240 Meylan, France</p>
+		</div>
+		<div class="cohorte-logo-footer">
+			<span style="font-size:70%; color:gray;"><a href="http://isandlatech.com">isandla<i>Tech</i></a> is the principal sponsor of </span><img src="/resources/images/cohorte-logo-footer.png" alt="COHORTE footer logo" />
+		</div>
+	</div> <!-- container -->
+</div> <!-- footer -->
+
+
+    <!-- jQuery -->
+    <script src="/resources/js/2/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/js/2/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+	<script src="/resources/js/2/cohorte.js" type="text/javascript"></script>
+
+</body>
+
+</html>
+

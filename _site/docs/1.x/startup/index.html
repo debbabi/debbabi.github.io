@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="isandlatech">
+    
+    <title>Reference Guide | Cohorte Project</title>
+
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=fr" rel=
+    "stylesheet">
+    <link href=
+    "//fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"
+    rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/resources/css/2/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/resources/css/2/cohorte.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
+        <div class="cohorte-logo">
+          <a href="/index.html"><img src="/resources/images/cohorte-logo-sm.png" alt="Cohorte logo" /></a>
+        </div>
+        <nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/resources/images/cohorte-logo.png"></img></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/docs/1.x/">Documentation</a></li>
+		      <li><a href="/downloads/">Downloads</a></li>
+		      <li><a href="/community/">Community</a></li>
+		      <li><a href="/news">News</a></li>
+		      <!--li><a href="/contribute/">Contribute</a></li-->
+		      <li>
+		        <a href="http://github.com/isandlatech/"><img src="/resources/images/github-logo-black.png" alt="GitHub Logo" /></a>		        
+		      </li>  
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<ul class="nav">          
+        
+</ul>    
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Reference Guide</h1>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <p><a href="../../../">Home</a> &gt; <a href="../">Documentation</a></p>
+
+<h2 id="startup">Startup</h2>
+
+<p>COHORTE system is composed of several Nodes. Only one node is specified to be Top Composer. It manages the components distribution among the available participating nodes.</p>
+
+<p>In this chapter, we will detail how to create and start COHORTE nodes using simple command lines.</p>
+
+<h3 id="creating-nodes">Creating nodes</h3>
+
+<p>To create a COHORTE node, use the provided <code>cohorte-create-node</code> command.</p>
+
+<h4 id="usage">Usage</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./cohorte-create-node <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-n NODE_NAME<span class="o">]</span> <span class="o">[</span>-a APP_NAME<span class="o">]</span></code></pre></div>
+
+<h4 id="options">Options</h4>
+
+<p>This command has the following options :</p>
+
+<pre>
+  -h, --help            show this help message and exit
+
+  -n NODE_NAME, --node NODE_NAME
+                        Name of the node
+  -a APP_NAME, --app-name APP_NAME
+                        application's symbolic name
+</pre>
+
+<h4 id="results">Results</h4>
+
+<p>This command will create a directory containing the following structure:</p>
+
+<p><img src="cohorte-node-directory-structure.png" alt="Cohorte node directory structure" /></p>
+
+<ul>
+  <li><em>node_name</em> correspond to the provided name by the user using the <code>--node</code> option.</li>
+  <li><em>run</em> is the starting script. It will be detail in the next section (Starting nodes)</li>
+  <li><em>repo</em> is a directory where user provided bundles should be placed.</li>
+  <li><em>conf</em> is a directory containing configuration files. Only one configuration file is created initially (autorun_conf.js), other files are generated by <code>run</code> script in this location.</li>
+</ul>
+
+<p>Here is the content of the generated <code>conf/autorun_conf.js</code>file. You should add component descriptions on the indicated zone.</p>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span> 
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;default-application&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;root&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;default-application-composition&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;components&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="err">/*</span> <span class="err">your</span> <span class="err">component</span> <span class="err">descriptions</span> <span class="err">here</span> <span class="err">*/</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Only the node started as Top Composer (see next section) should have this configuration file completed. Other nodes started as simple nodes will ignore this file.</p>
+
+<h3 id="starting-nodes">Starting nodes</h3>
+
+<p>To start a COHORTE node, you have to use the generated <code>run</code> command (this command calls <code>cohorte-start-node</code> internal command).</p>
+
+<h4 id="usage-1">Usage</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./run <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-a APPLICATION_ID<span class="o">]</span> <span class="o">[</span>--use-config CONFIG_FILE<span class="o">]</span>
+        <span class="o">[</span>--update-config<span class="o">]</span> <span class="o">[</span>--show-config<span class="o">]</span>
+        <span class="o">[</span>-b BASE_ABSOLUTE_PATH<span class="o">]</span> <span class="o">[</span>-n NODE_NAME<span class="o">]</span>
+        <span class="o">[</span>--top-composer<span class="o">]</span>
+        <span class="o">[</span>--web-admin WEB_ADMIN_PORT<span class="o">]</span>
+        <span class="o">[</span>--shell-admin SHELL_ADMIN_PORT<span class="o">]</span>
+        <span class="o">[</span>--transport TRANSPORT_MODES<span class="o">]</span>
+        <span class="o">[</span>--xmpp-server XMPP_SERVER<span class="o">]</span>
+        <span class="o">[</span>--xmpp-port XMPP_PORT<span class="o">]</span> <span class="o">[</span>--xmpp-jid XMPP_JID<span class="o">]</span>
+        <span class="o">[</span>--xmpp-password XMPP_PASSWORD<span class="o">]</span></code></pre></div>
+
+<h4 id="options-1">Options</h4>
+
+<p>There are different kind of options depending on the use of the actual node.</p>
+
+<h5 id="mandatory-options">Mandatory options</h5>
+
+<pre>
+  -a APPLICATION_ID, --app-id APPLICATION_ID
+                        Application's ID
+</pre>
+
+<p>All the nodes participating for a given application should have the same <code>application-id</code>. </p>
+
+<h5 id="startup-configuration-options">Startup configuration options</h5>
+
+<pre>
+  --use-config CONFIG_FILE  Configuration file to use for starting cohorte node.
+                        By default the run.js file is used if available
+  --update-config       Update startup configuration file with provided
+                        options
+  --show-config         Show startup configuration file content
+  -b BASE_ABSOLUTE_PATH, --base BASE_ABSOLUTE_PATH
+                        absolute file path of the node's directory
+</pre>
+
+<p>We can write the startup configurations in a separate JSON file (see How to use startup configuration files section). This options will simplify the command options list and allows sharing the same startup configurations between several nodes.</p>
+
+<h5 id="information-about-the-node-to-start">Information about the node to start</h5>
+
+<pre>
+  -n NODE_NAME, --node NODE_NAME
+                        Node name
+  --top-composer        Flag indicating that this node is a Top Composer
+  --web-admin WEB_ADMIN_PORT
+                        Node web admin port
+  --shell-admin SHELL_ADMIN_PORT
+                        Node remote shell port
+</pre>
+
+<p>We can provide a different node name than the already provided when the node is created (by using –node option). One important option of cohorte nodes is the <code>--is-top-composer</code>. If set, the node will be considered as a <strong>Top Composer</strong> (manages all the distribution of components among the available nodes). Users can also provide customised informations such as the http port to use for the <em>web-admin</em> component (see <a href="/docs/1.x/monitoring">monitoring chapter</a>), or the port to use for the remote shell admin component. </p>
+
+<h5 id="information-about-the-transport-protocols-to-use">Information about the transport protocols to use</h5>
+<pre>
+  --transport TRANSPORT_MODES
+                        Transport mode (http and/or xmpp - seperated by comma)
+  --xmpp-server XMPP_SERVER
+                        XMPP server
+  --xmpp-port XMPP_PORT
+                        XMPP server port
+  --xmpp-jid XMPP_JID   XMPP jid
+  --xmpp-password XMPP_PASSWORD
+                        XMPP Room
+</pre>
+
+<p>The <code>--transport</code> option allow the use to choose which transport protocol to use between the actual node and the other nodes participating in the same application. You can provide a common seperated list of the supported protocols (<code>http</code> and <code>xmpp</code> for the moment). Each protocol need additional configuration options that should be provided seperataly using dedicated options (–xmpp-server for instance to mention the XMPP server to use).</p>
+
+<h4 id="how-to-use-startup-configuration-files">How to use startup configuration files</h4>
+
+<p>To avoid re-typing the same options each time a node is started, or to share the same configuration between several nodes, you can provide a <em>startup configuration file</em> which contains such startup configurations. The content of such file is described hereafter. </p>
+
+<blockquote>
+  <p>run.js</p>
+</blockquote>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>	
+	<span class="nt">&quot;application-id&quot;</span><span class="p">:</span> <span class="s2">&quot;ABCDEF&quot;</span><span class="p">,</span>
+
+	<span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="p">{</span>		
+		<span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;node-rasp&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;top-composer&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="nt">&quot;web-admin&quot;</span><span class="p">:</span> <span class="mi">9001</span><span class="p">,</span>
+		<span class="nt">&quot;shell-admin&quot;</span><span class="p">:</span> <span class="mi">9001</span>		
+	<span class="p">},</span>
+	<span class="nt">&quot;transport&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xmpp&quot;</span><span class="p">],</span>
+	<span class="nt">&quot;transport-xmpp&quot;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;xmpp-server&quot;</span><span class="p">:</span> <span class="s2">&quot;charmanson.isandlatech.com&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;xmpp-port&quot;</span><span class="p">:</span> <span class="mi">5222</span><span class="p">,</span>
+		<span class="nt">&quot;xmpp-jid&quot;</span><span class="p">:</span> <span class="s2">&quot;bot@charmanson.isandlatech.com&quot;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<ul>
+  <li>To show the content of the startup configuration file :</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./run --show-config</code></pre></div>
+
+<ul>
+  <li>To use other configuration file than the default <em>run.js</em> file :</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./run --use-config other_run_conf.js</code></pre></div>
+
+<ul>
+  <li>Update the startup configuration using command options (–some-configuration should be replaced with a supported options list):</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./run --some-configurations --update-config</code></pre></div>
+
+<p>This will update all the provided options within the startup configuration file. You can use also this option to create the default <em>run.js</em> file with a set of configuration options.</p>
+
+<h3 id="other-advanced-startup-configurations">Other advanced startup configurations</h3>
+
+<p>The following configuration files (located on <code>$COHORTE_HOME/conf</code> folder) are used by COHORTE for the initial configuration of the different internal components. You can override them by creating a file with the same name in your <code>$COHORTE_BASE/conf</code> folder.</p>
+
+<blockquote>
+  <p>Boot configuration files</p>
+</blockquote>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+	<tr>
+		<th> File               </th><th> Bundles &amp; Components  </th>
+	</tr>
+	</thead>
+	<tbody><tr>
+		<td> <a href="" src="#">boot-common.js</a>        </td><td> Pelix, iPOPO, Shell </td>
+	</tr>
+	<tr>
+		<td> <a href="" src="#">boot-common-py.js</a>     </td><td> Pelix Remote Services, Cohorte Signals </td>
+	</tr>
+	</tbody>
+	</table>
+
+<blockquote>
+  <p>Python Isolates configuration files</p>
+</blockquote>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>	
+	<tr>
+		<th> File               </th><th> Bundles &amp; Components  </th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td> <a href="" src="#">python-common-http.js</a> </td><td> HTTP Server </td>
+	</tr>
+	</tbody>
+	</table>
+
+<blockquote>
+  <p>Java Isolates configuration files</p>
+</blockquote>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>	
+	<tr>
+		<th> File               </th><th> Bundles &amp; Components  </th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td> <a href="" src="#">java-common.js</a>        </td><td> iPOJO, Shell, Cohorte PyBoot, Isolate Base &amp; Utilities </td>
+	</tr>
+	<tr>
+		<td> <a href="" src="#">java-common-http.js</a>   </td><td> HTTP Server </td>
+	</tr>
+	<tr>
+		<td> <a href="" src="#">java-common-remote.js</a> </td><td> Cohorte Remote Services </td>
+	</tr>	
+	<tr>
+		<td> <a href="" src="#">java-common-ui.js</a>     </td><td> Cohorte UI Admin </td>
+	</tr>
+</tbody></table>
+
+<p><a href="../../../">Home</a> &gt; <a href="../">Documentation</a></p>
+
+            <br/>
+            <br/>
+            <br/>
+            
+            <a href="../applications" class="btn float-left" title="Previous page"> Previous </a>
+            
+            
+            <a href="../shell" class="btn float-right" title="Next page"> Next </a>
+            
+            <hr/>
+            <br/>
+            <br/>
+                
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+
+
+
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>Documentation</h5></li>
+			<li><a href="/documentation/what-is-cohorte.html">What is COHORTE?</a></li>
+			<li><a href="/documentation/getting-started.html">Getting Started</a></li>
+			<li><a href="/documentation/tutorials.html">Tutorials</a></li>
+			<li><a href="/documentation/demonstrations.html">Demonstrations</a></li>
+			<li><a href="/documentation/publications.html">Articles & Publications</a></li>
+			<li><a href="/documentation/guide.html">Reference Guide</a></li>
+		</ul>
+		<ul>
+			<li><h5>Downloads</h5></li>
+			<li><a href="/download/">Stable Release</a></li>
+			<li><a href="/download/.html">Development Release</a></li>
+		</ul>
+		<ul>
+			<li><h5>Community</h5></li>
+			<li><a href="/community/index.html#mailing_lists">Mailing lists</a></li>
+			<li><a href="/community/index.html#github">GitHub</a></li>
+		</ul>
+		<ul>
+			<li><h5>COHORTE</h5></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/news">News Archive</a></li>
+			<li><a href="/license.html">COHORTE License</a></li>
+		</ul>
+		</div>
+		<div class="container">
+		<div class="copyright">
+			<a style="float: left; margin-right: 8px;" href="http://isandlatech.com"><img src="/resources/images/isandlatech-logo-sm-carre.png" alt="isandlaTech logo" /></a>
+			<p style="float: left;"><br/>Copyright &copy; 2011-<span class="current-year"></span> isandla<i>Tech</i> S.A.R.L<br/>3 chemin du vieux chêne. 38240 Meylan, France</p>
+		</div>
+		<div class="cohorte-logo-footer">
+			<span style="font-size:70%; color:gray;"><a href="http://isandlatech.com">isandla<i>Tech</i></a> is the principal sponsor of </span><img src="/resources/images/cohorte-logo-footer.png" alt="COHORTE footer logo" />
+		</div>
+	</div> <!-- container -->
+</div> <!-- footer -->
+
+
+    <!-- jQuery -->
+    <script src="/resources/js/2/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/js/2/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+	<script src="/resources/js/2/cohorte.js" type="text/javascript"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="isandlatech">
+    
+    <title>Getting Started Python | Cohorte Project</title>
+
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=fr" rel=
+    "stylesheet">
+    <link href=
+    "//fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"
+    rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/resources/css/2/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/resources/css/2/cohorte.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
+        <div class="cohorte-logo">
+          <a href="/index.html"><img src="/resources/images/cohorte-logo-sm.png" alt="Cohorte logo" /></a>
+        </div>
+        <nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/resources/images/cohorte-logo.png"></img></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/docs/1.x/">Documentation</a></li>
+		      <li><a href="/downloads/">Downloads</a></li>
+		      <li><a href="/community/">Community</a></li>
+		      <li><a href="/news">News</a></li>
+		      <!--li><a href="/contribute/">Contribute</a></li-->
+		      <li>
+		        <a href="http://github.com/isandlatech/"><img src="/resources/images/github-logo-black.png" alt="GitHub Logo" /></a>		        
+		      </li>  
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<ul class="nav">          
+        
+</ul>    
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Getting Started Python</h1>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <p><a href="../../../../">Home</a> &gt; <a href="../../">Documentation</a> &gt; <a href="../">Tutorials</a> &gt; <a href="./">Spellchecker</a></p>
+
+<h2 id="cohoret-for-python">COHORET for Python</h2>
+
+<p>Welcome to COHORTE for Python! With COHORTE, you can build modular and resilient applications using the <a href="https://www.python.org">Python programming language</a>, and take advantage of the many benefits of the COHORTE approach (see <a href="/docs/1.x/what-is-cohorte">what is COHORTE?</a>).  </p>
+
+<h3 id="spellchecker-application">Spellchecker application</h3>
+
+<p>The application to develop in this tutorial provides a web interface in which users can check the spell of their sentences in one or another language. It concists of three main type of components as shown in the following picture:</p>
+
+<p><img src="spellchecker-app-img1.png" alt="SpellChecker Application" /></p>
+
+<p><br /></p>
+
+<ol>
+  <li><strong>Dictionary components</strong>: implementing and providing the <em>Dictionary Service</em>. Each implementation indicates the language of the dictionary as a service property.</li>
+  <li><strong>Spell Checker</strong>: implements the <em>Checker Service</em> which take as input a sentence of words, and by using the <em>Dictionary Service</em> it verifies the existance of misspelled words. It uses the adequate provided <em>Dictionary Service</em>s depending on user language choice. A list of missplened words are returned by this service.</li>
+  <li><strong>Spell Client</strong>: is a simple web interface that shows a form to the final user to test the application. This component uses the <em>Checker Service</em> for the application’s logic part, and it also requires an <em>HTTP Service</em> to publish the web interface and response to the form requests initiated by the user.</li>
+</ol>
+
+<p>The required <em>HTTP Service</em> for the last component <strong>Spell Client</strong> is provided natively by the COHORTE runtime. No need to implement it! In the following, we show you how the different components are implemented in Python or Java programming languages.</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>In this section, we will detail how the different components are implemented. For simplicity, we will not use a modern Integrated Developement Environment like eclipse, we rather create simple text files for the different Python code implementing our application components.</p>
+
+<div class="note">
+<span class="note-title">NOTE</span>
+<p class="note-content">
+Check <a href="/docs/1.X/ide">this page</a> for instructions on how to use your prefered IDE like Eclipse (PyDev) or IDEA (PyCharm).
+</p>
+</div>
+
+<p>First, create a directory called <code>spellchecker</code>on which you will put the different components.</p>
+
+<p>Create a file called <code>__init__.py</code> within the <code>spellchecker</code> package folder. This file contains the name of the different services of our application as follow:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+<span class="n">SERVICE_DICTIONARY</span> <span class="o">=</span> <span class="s">&#39;demos.spellchecker.dictionaryService&#39;</span>
+<span class="n">SERVICE_CHECKER</span> <span class="o">=</span> <span class="s">&#39;demos.spellchecker.checkerService&#39;</span></code></pre></div>
+
+<p>A COHORTE Component is implemented in python as a simple module with some specific class and method decorators. The following python code <code>spell_dictionary_EN.py</code> shows the implementation of the <strong>English Dictionary</strong> component. </p>
+
+<h4 id="english-dictionary">English Dictionary</h4>
+<p><a href="https://github.com/isandlaTech/cohorte-demos/blob/master/spellchecker/bundles/spellchecker-python/src/main/python/spellchecker/spell_dictionary_EN.py">spell_dictionary_EN.py</a></p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+<span class="kn">from</span> <span class="nn">pelix.ipopo.decorators</span> <span class="kn">import</span> <span class="n">ComponentFactory</span><span class="p">,</span> <span class="n">Property</span><span class="p">,</span> <span class="n">Provides</span><span class="p">,</span> \
+    <span class="n">Validate</span><span class="p">,</span> <span class="n">Invalidate</span>
+
+<span class="nd">@ComponentFactory</span><span class="p">(</span><span class="s">&quot;dictionary_en_factory&quot;</span><span class="p">)</span>
+<span class="nd">@Provides</span><span class="p">(</span><span class="n">spellchecker</span><span class="o">.</span><span class="n">SERVICE_DICTIONARY</span><span class="p">)</span>
+<span class="nd">@Property</span><span class="p">(</span><span class="s">&quot;_language&quot;</span><span class="p">,</span><span class="s">&quot;language&quot;</span><span class="p">,</span><span class="s">&quot;EN&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">SpellDictionary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dictionary</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_language</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@Validate</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;hello&quot;</span> <span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;welcome&quot;</span><span class="p">,</span> <span class="s">&quot;to&quot;</span><span class="p">,</span> <span class="s">&quot;cohorte&quot;</span><span class="p">}</span>
+
+    <span class="nd">@Invalidate</span>
+    <span class="k">def</span> <span class="nf">invalidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dictionary</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">check_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">word</span> <span class="ow">or</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dictionary</span></code></pre></div>
+
+<p>We have a simple Python module containing a class called <code>SpellDictionary</code>. In this module we have used several decorators defined and imported from  <code>pelix.ipopo</code> package. This package (Pelix/iPOPO project) is our python supported component-based framework in COHORTE (For more information about the supported component-based models, check <a href="/documentation/reference-guide/components.html">this page</a> of the reference guide). </p>
+
+<p>Here are some explanations of the meanning and effects of each decorator:</p>
+
+<ul>
+  <li>
+    <p><code>@ComponentFactory</code> allows COHORTE to consider this class as a <em>component factory</em> which is an object used to instantiate $Component*s of the class <code>SpellDictionary</code> at runtime. The name given between parenthesis is the factory name. </p>
+  </li>
+  <li>
+    <p><code>@Provides</code> makes this component as a service provider for the service given between parenthesis (<em>SERVICE_DICTIONARY</em>). This service has one method (<em>check_word</em>) that any provider should implement. </p>
+  </li>
+  <li>
+    <p><code>@Property</code> add some contextual properties to the provider implementation of the service. Here in this example, we add the property <em>language</em> and set its value to <code>EN</code>. When another component requires the <em>dictionary_service</em>, it can filter the providers depending on this properties (for instance take only dictionary providers for english language - having language property set to <code>EN</code>).</p>
+  </li>
+</ul>
+
+<p>In addition to this class decorators, we have also two method decorators:</p>
+
+<ul>
+  <li>
+    <p><code>@Validate</code> lets the COHORTE runtime calls the decorated method when the component instance is lanched and is in a valid state.</p>
+  </li>
+  <li>
+    <p><code>@Invalidate</code> lets the COHORTE runtime calls the decorated method when the component is not valid (dependencies of this component are not resolved for instance).</p>
+  </li>
+</ul>
+
+<p>The french dictionary implementation (not showed here) is mainly the same as the english implementation of the <strong>Dictionary Service</strong>. The only differences are the <em>language</em> property set to <code>EN</code> and the <em>self._dictionary_</em> variable containing instead a set of french words.</p>
+
+<p>We will now implement the <strong>Spell Checker</strong> service provider as shown on the following code :</p>
+
+<h4 id="spell-checker">Spell Checker</h4>
+
+<p><a href="https://github.com/isandlaTech/cohorte-demos/blob/master/spellchecker/bundles/spellchecker-python/src/main/python/spellchecker/spell_checker.py">spell_checker.py</a></p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+<span class="kn">from</span> <span class="nn">pelix.ipopo.decorators</span> <span class="kn">import</span> <span class="n">ComponentFactory</span><span class="p">,</span> <span class="n">Provides</span><span class="p">,</span> \
+    <span class="n">Validate</span><span class="p">,</span> <span class="n">Invalidate</span><span class="p">,</span> <span class="n">Requires</span><span class="p">,</span> <span class="n">BindField</span><span class="p">,</span> <span class="n">UnbindField</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="nd">@ComponentFactory</span><span class="p">(</span><span class="s">&quot;checker_factory&quot;</span><span class="p">)</span>
+<span class="nd">@Provides</span><span class="p">(</span><span class="n">spellchecker</span><span class="o">.</span><span class="n">SERVICE_CHECKER</span><span class="p">)</span>
+<span class="nd">@Requires</span><span class="p">(</span><span class="s">&quot;_dictionaries&quot;</span><span class="p">,</span> <span class="n">spellchecker</span><span class="o">.</span><span class="n">SERVICE_DICTIONARY</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">SpellChecker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dictionaries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">languages</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@BindField</span><span class="p">(</span><span class="s">&#39;_dictionaries&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">bind_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">svc_ref</span><span class="p">):</span>
+        <span class="n">language</span> <span class="o">=</span> <span class="n">svc_ref</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&#39;language&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">languages</span><span class="p">[</span><span class="n">language</span><span class="p">]</span> <span class="o">=</span> <span class="n">service</span>
+
+    <span class="nd">@UnbindField</span><span class="p">(</span><span class="s">&#39;_dictionaries&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">unbind_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">svc_ref</span><span class="p">):</span>
+        <span class="n">language</span> <span class="o">=</span> <span class="n">svc_ref</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">&#39;language&#39;</span><span class="p">)</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">languages</span><span class="p">[</span><span class="n">language</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s">&quot;EN&quot;</span><span class="p">):</span>
+        <span class="n">checked_list</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dictionary</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">languages</span><span class="p">[</span><span class="n">language</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">checked_list</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">check_word</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span></code></pre></div>
+
+<p>This second component provides <strong>Checker Service</strong> and it requires <strong>Dictionary Service</strong> to operate on the input data. Notice that we have set the <em>aggregate</em> option of the <code>@Requires</code>decorator to <em>true</em> so that all the possible providers of the <strong>Dictionary Service</strong> are injected in the specified class attribute <em>_dictionaries</em>. </p>
+
+<p>In addition to already explained decorators used in the first component, in this module we have used this two new decorators:</p>
+
+<ul>
+  <li><code>@BindField</code>: calls the decorated method when a new provider of the <strong>Dictionary Service</strong> is detected at runtime. In this case, we want to get the service property <em>language</em> to construct a map of &lt;language/provider&gt; peers. This property is retrieved from the service reference <em>svc_ref</em> to the actual <strong>Dictionary Service</strong> provider.</li>
+  <li><code>@UnbindField</code>: calls the decorated method when one provider of the <em>dictionary_service</em> in no longer available. We update our internal map in response to this change. </li>
+</ul>
+
+<p>The <em>checker_service</em> implemented by this component has one methdd <em>check</em>. It takes a paragraph and a language parameters and uses the available <em>*Dictionary Service$</em> providers to check the spell of paragraph’s words. This service is used by the next component <em>Spell Client</em>.</p>
+
+<h4 id="spell-client">Spell Client</h4>
+
+<p><a href="https://github.com/isandlaTech/cohorte-demos/blob/master/spellchecker/bundles/spellchecker-python/src/main/python/spellchecker/spell_client.py">spell_client.py</a></p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+
+<span class="kn">from</span> <span class="nn">pelix.ipopo.decorators</span> <span class="kn">import</span> <span class="n">ComponentFactory</span><span class="p">,</span> <span class="n">Provides</span><span class="p">,</span> <span class="n">Property</span><span class="p">,</span> \
+    <span class="n">Validate</span><span class="p">,</span> <span class="n">Invalidate</span><span class="p">,</span> <span class="n">Requires</span>
+<span class="kn">from</span> <span class="nn">pelix.utilities</span> <span class="kn">import</span> <span class="n">to_str</span>
+
+<span class="kn">import</span> <span class="nn">pelix.remote</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">urllib.parse</span> <span class="kn">as</span> <span class="nn">urlparse</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">urlparse</span>
+
+<span class="nd">@ComponentFactory</span><span class="p">(</span><span class="s">&quot;spell_client_factory&quot;</span><span class="p">)</span>
+<span class="nd">@Provides</span><span class="p">(</span><span class="n">specifications</span><span class="o">=</span><span class="s">&#39;pelix.http.servlet&#39;</span><span class="p">)</span>
+<span class="nd">@Property</span><span class="p">(</span><span class="s">&#39;_path&#39;</span><span class="p">,</span> <span class="s">&#39;pelix.http.path&#39;</span><span class="p">,</span> <span class="s">&quot;/spellchecker&quot;</span><span class="p">)</span>
+<span class="nd">@Requires</span><span class="p">(</span><span class="s">&quot;_checker&quot;</span><span class="p">,</span> <span class="s">&quot;checker_service&quot;</span><span class="p">)</span>
+<span class="nd">@Property</span><span class="p">(</span><span class="s">&#39;_reject&#39;</span><span class="p">,</span> <span class="n">pelix</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">PROP_EXPORT_REJECT</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;pelix.http.servlet&#39;</span><span class="p">])</span>
+<span class="k">class</span> <span class="nc">SpellClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_checker</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Handle a GET</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="p">[</span><span class="n">query</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">paragraph</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+            <span class="n">language</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">paragraph</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;paragraph&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">language</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;language&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">language</span> <span class="o">=</span> <span class="n">language</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                <span class="n">misspelled_words</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_checker</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">paragraph</span><span class="p">,</span> <span class="n">language</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">misspelled_words</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="s">&#39;Dictionary provider for this language is not installed!&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">misspelled_words</span><span class="p">:</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="s">&#39;All words are well spelled !&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;&lt;b&gt;The misspelled words are: &lt;/b&gt;&quot;</span>
+                        <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot;&lt;span style=&#39;color:red;&#39;&gt;&quot;</span>
+                        <span class="n">result</span> <span class="o">+=</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">misspelled_words</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/span&gt;&quot;</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;Fill the language and paragraph inputs!&quot;</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">            &lt;html&gt;&lt;head&gt;&lt;title&gt;SpellChecker&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span>
+<span class="s">                &lt;h2&gt;Spellchecker Demo&lt;/h2&gt;</span>
+<span class="s">                &lt;hr/&gt;</span>
+<span class="s">                &lt;form action=&quot;/spellchecker&quot; method=&quot;get&quot; &gt;</span>
+<span class="s">                    Language: &lt;input type=&quot;radio&quot; name=&quot;language&quot; value=&quot;EN&quot;&gt;EN</span>
+<span class="s">                    &lt;input type=&quot;radio&quot; name=&quot;language&quot; value=&quot;FR&quot;&gt;FR</span>
+<span class="s">                    &lt;input type=&quot;radio&quot; name=&quot;language&quot; value=&quot;CN&quot;&gt;CN&lt;br/&gt;</span>
+<span class="s">                    Paragraph: &lt;input type=&quot;text&quot; name=&quot;paragraph&quot; size=&quot;50&quot;/&gt;&lt;br/&gt;</span>
+<span class="s">                    &lt;input type=&quot;submit&quot; value=&quot;Check&quot;/&gt;</span>
+<span class="s">                &lt;/form&gt;</span>
+<span class="s">                &lt;hr/&gt;</span>
+<span class="s">                {result}</span>
+<span class="s">                &lt;hr/&gt;</span>
+<span class="s">            &lt;/body&gt;&lt;/html&gt;</span>
+<span class="s">            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">send_content</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span></code></pre></div>
+
+<p>This last component implements and provides the <em>pelix.http.servlet</em> so that it will be called by the web server when a request arrives. The <em>HTTP Service</em> provider (included in COHORTE) call the <em>do_GET</em> method of this component. In our example, we return via the response object a valid html page with a form asking the user to choose a language and put his sentence to check.</p>
+
+<h3 id="running-your-application">Running your application</h3>
+
+<p>To start running your awesome first COHORTE application, you need to <a href="../../downloads">download</a> and install the COHORTE runtime platform in your local machine (see the <a href="/documentation/reference-guide/setup.html">setup section of the reference guide</a> for more information). </p>
+
+<p>In the following, we suppose that you have a Max OS X platform. Download the archive file of the COHORTE runtime from the <a href="/downloads">downloads page</a> (e.g., cohorte-1.0.0-macosx.tar.gz).</p>
+
+<p>Extract the dowloaded file anywhere in your file system and create the <em>environment Variable</em> <strong>$COHORTE_HOME</strong> which has as value the fullpath to <code>home</code> sub-folder of the extracted archive file (note that you can just double click on <code>home/setup.command</code> file to setup this environment variable).</p>
+
+<p>The <code>home</code> sub-folder contains the main COHORTE runtime libraries and configuration files. Whereas the <code>base</code> folder contains user-specific bundles and configurations. To run your spellchecker application you need to:</p>
+
+<ul>
+  <li>move your spellchecker package folder to <code>base/repo</code> folder.</li>
+  <li>fill the <code>base/conf/autorun_conf.js</code> file with the description of application’s components to be instantiated (see more information about <a href="/documentation/reference-guide/applications.html">the formalism in the reference guide</a>).</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;spellchecker-demo-app&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;root&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;spellchecker-demo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;components&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;dictionary_en&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;factory&quot;</span> <span class="o">:</span> <span class="s2">&quot;dictionary_en_factory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language&quot;</span> <span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;dictionary_fr&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;factory&quot;</span> <span class="o">:</span> <span class="s2">&quot;dictionary_fr_factory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language&quot;</span> <span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;checker&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;factory&quot;</span> <span class="o">:</span> <span class="s2">&quot;checker_factory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language&quot;</span> <span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;spell_client&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;factory&quot;</span> <span class="o">:</span> <span class="s2">&quot;client_factory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language&quot;</span> <span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+        <span class="p">}</span> <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>This description defines a new application named <code>spellchecker-demo-app</code>on which four components will be instantiated. The wiring between the different components is done automatically following the service-oriented architecture (service providers and service consumers) even if one component is placed in remote nodes (see <a href="/documentation/reference-guide/applications.html">COHORTE applications reference guide</a> for more information on how to personalise your application’s architecture). </p>
+
+<p>By default, with this minimal description, all the components will be instantiated in one Python isolate (as all the components are implemented in Python). Recall that a COHORTE Isolate is a seperate process (or a gateway) executing a set of components. The Python Isolate consists in Pelix platform hosting your different bundles as well as the needed system bundles (including the HTTP service provider). </p>
+
+<p>COHORTE runtime components managing your application’s isolates and the distribution of components among them are located on a special purpose (static) isolate (called <code>cohorte-isolate</code>). There is one <code>cohorte-isolate</code>per node, but only one is started as a <strong>Top Isolate</strong> which manage all other isolates.  </p>
+
+<p>Next, you need to launch your application… </p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">./run.sh -t -c</code></pre></div>
+
+<div class="note">
+<span class="note-title">NOTE</span>
+<p class="note-content">
+For more setup and startup configurations, please check <a href="/docs/1.x/startup">this page</a>.
+</p>
+</div>
+
+<h3 id="test-your-application">Test your application</h3>
+
+<p>The resulting Spell Client looks like this:</p>
+
+<p><img src="spellchecker-app-img3.png" alt="SpellChecker Application" /></p>
+
+<p>The important quality of this architecture is the capability to update any component without restarting the global application. This is important to allow adding new <em>Dictionary Service</em>s or updating a new efficient version of the <strong>Spell Checker</strong> component, without stopping the system and hence guaranting the continuity of business services.</p>
+
+<p>The different application components can be deployed on different Isolates. This is important to ensure that a failure of one or more components does not affect the other ones. The isolation is managed automatically by COHORTE, this feature is explored with more details in <a href="../temper/">this tutorial</a>.</p>
+
+<h3 id="monitoring">Monitoring</h3>
+
+<p><img src="spellchecker-app-img4.png" alt="SpellChecker Application" /></p>
+
+<p><a href="../../../../">Home</a> &gt; <a href="../../">Documentation</a> &gt; <a href="../">Tutorials</a> &gt; <a href="./">Spellchecker</a></p>
+
+            <br/>
+            <br/>
+            <br/>
+            
+            <a href="./" class="btn float-left" title="Previous page"> Previous </a>
+            
+            
+            <a href="java.html" class="btn float-right" title="Next page"> Next </a>
+            
+            <hr/>
+            <br/>
+            <br/>
+                
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+
+
+
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>Documentation</h5></li>
+			<li><a href="/documentation/what-is-cohorte.html">What is COHORTE?</a></li>
+			<li><a href="/documentation/getting-started.html">Getting Started</a></li>
+			<li><a href="/documentation/tutorials.html">Tutorials</a></li>
+			<li><a href="/documentation/demonstrations.html">Demonstrations</a></li>
+			<li><a href="/documentation/publications.html">Articles & Publications</a></li>
+			<li><a href="/documentation/guide.html">Reference Guide</a></li>
+		</ul>
+		<ul>
+			<li><h5>Downloads</h5></li>
+			<li><a href="/download/">Stable Release</a></li>
+			<li><a href="/download/.html">Development Release</a></li>
+		</ul>
+		<ul>
+			<li><h5>Community</h5></li>
+			<li><a href="/community/index.html#mailing_lists">Mailing lists</a></li>
+			<li><a href="/community/index.html#github">GitHub</a></li>
+		</ul>
+		<ul>
+			<li><h5>COHORTE</h5></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/news">News Archive</a></li>
+			<li><a href="/license.html">COHORTE License</a></li>
+		</ul>
+		</div>
+		<div class="container">
+		<div class="copyright">
+			<a style="float: left; margin-right: 8px;" href="http://isandlatech.com"><img src="/resources/images/isandlatech-logo-sm-carre.png" alt="isandlaTech logo" /></a>
+			<p style="float: left;"><br/>Copyright &copy; 2011-<span class="current-year"></span> isandla<i>Tech</i> S.A.R.L<br/>3 chemin du vieux chêne. 38240 Meylan, France</p>
+		</div>
+		<div class="cohorte-logo-footer">
+			<span style="font-size:70%; color:gray;"><a href="http://isandlatech.com">isandla<i>Tech</i></a> is the principal sponsor of </span><img src="/resources/images/cohorte-logo-footer.png" alt="COHORTE footer logo" />
+		</div>
+	</div> <!-- container -->
+</div> <!-- footer -->
+
+
+    <!-- jQuery -->
+    <script src="/resources/js/2/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/js/2/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+	<script src="/resources/js/2/cohorte.js" type="text/javascript"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="isandlatech">
+    
+    <title>Temper tutorial | Cohorte Project</title>
+
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=fr" rel=
+    "stylesheet">
+    <link href=
+    "//fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"
+    rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/resources/css/2/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/resources/css/2/cohorte.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
+        <div class="cohorte-logo">
+          <a href="/index.html"><img src="/resources/images/cohorte-logo-sm.png" alt="Cohorte logo" /></a>
+        </div>
+        <nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/resources/images/cohorte-logo.png"></img></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/docs/1.x/">Documentation</a></li>
+		      <li><a href="/downloads/">Downloads</a></li>
+		      <li><a href="/community/">Community</a></li>
+		      <li><a href="/news">News</a></li>
+		      <!--li><a href="/contribute/">Contribute</a></li-->
+		      <li>
+		        <a href="http://github.com/isandlatech/"><img src="/resources/images/github-logo-black.png" alt="GitHub Logo" /></a>		        
+		      </li>  
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<ul class="nav">          
+        
+</ul>    
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Temper tutorial</h1>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <p><a href="../../../../">Home</a> &gt; <a href="../../">Documentation</a> &gt; <a href="../">Tutorials</a></p>
+
+<h2 id="temper-tutorial">Temper tutorial</h2>
+
+<p>In this tutorial we will have a complete working temperature aggregation application with different type of components and deployment devices.</p>
+
+<p>Let’s first talk about the application’s architecture.</p>
+
+<h3 id="application">Application</h3>
+
+<p>The <em>temper</em> application has a <em>service-oriented architecture SOA</em> composed of components and services depicted in the following picture:</p>
+
+<p><img src="temper-img-1.png" alt="Architecture" /></p>
+
+<p>There are two services:</p>
+
+<ul>
+  <li><strong>TEMPERATURE SERVICE</strong>: this is the interface for all temperature sensor devices. Users can implement it in Python or Java while respecting the provided interface. It has three methods:
+    <ul>
+      <li><code>get_name</code>: retrieves the name of the sensor.</li>
+      <li><code>get_unit</code>: retrieves the values unit name.</li>
+      <li><code>get_value</code>: retrieves the current value of the sensor.</li>
+    </ul>
+  </li>
+  <li><strong>AGGREGATOR SERVICE</strong>: collects the temperature of the connected sensors (using the TEMPERATURE SERVIC) and stock them locally. The stocked information is used by third-party visualisation interfaces (<em>web interface</em> or <em>Unity 3D interface</em>) using the following methods:
+    <ul>
+      <li><code>get_history</code>: retrieves the whole known history as a dictionary.</li>
+      <li><code>get_sensor_history</code>: retrieves the known history for the given sensor.</li>
+      <li><code>get_sensors</code>: retrieves the list of sensors visible in the history.</li>
+      <li><code>get_active_sensors</code>: retrieves the list of active sensors.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="deployment-and-runtime-constraints">Deployment and runtime constraints</h3>
+
+<p>Now, its time to handle the deployment of these components. In this use case, we can have different type of execution machines:</p>
+
+<ul>
+  <li><strong>Gateway</strong> : any personal computer or integrated homebox that can hosts and runs the <em>aggregator</em> component as well as the <em>web interface</em> component.</li>
+  <li><strong>PC with JVM installed</strong> (java-sensor-pc): any personal computer that can hosts and runs  Java sensor components.</li>
+  <li><strong>PC with Python installed</strong> (python-sensor-pc): any personal computer that can hosts and runs Python sensor components.</li>
+  <li><strong>Raspberry-Pi</strong> : any Raspberry-Pi device that can hosts and runs Python sensor component.</li>
+  <li><strong>PC with Unity installed</strong> (datashower): any personal computer that can hosts and runs the <em>Unity 3D engine</em>. </li>
+</ul>
+
+<p>COHORTE provides a <a href="/docs/1.x/applications"><em>composition language</em></a> which helps administrators fixing some rules concerning the deployment and instantiation of application components. </p>
+
+<p>The following picture depicts the graphical notation of the resulting specification for this use case:</p>
+
+<p><img src="temper-img-2.png" alt="Deployment" /></p>
+
+<p>Legend:</p>
+
+<ul>
+  <li><strong>JS</strong>: Java temperature Sensor</li>
+  <li><strong>PC</strong>: Python temperature Sensor</li>
+  <li><strong>A</strong>: temperature Aggregator </li>
+  <li><strong>UI</strong>: web User Interface</li>
+  <li><strong>U</strong>: Unity 3D interface </li>
+</ul>
+
+<p>The following XML file represents the XMl equivalent for this deployment and composition specification:</p>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+	<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;temper-app-v1&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;root&quot;</span> <span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;temper-app-v1-composition&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;components&quot;</span> <span class="p">:</span> <span class="p">[</span> 
+			<span class="p">{</span>
+			<span class="err">/**</span>
+			 <span class="err">*</span> <span class="err">Python</span> <span class="err">sensor</span>
+			 <span class="err">*/</span>
+			<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;PS&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;python-sensor-factory&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;temper.python&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;python-sensor-pc&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;properties&quot;</span> <span class="p">:</span> <span class="p">{</span>
+				<span class="nt">&quot;temper.value.min&quot;</span> <span class="p">:</span> <span class="mi">-5</span><span class="p">,</span>
+				<span class="nt">&quot;temper.value.max&quot;</span> <span class="p">:</span> <span class="mi">45</span>
+			<span class="p">}</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="err">/**</span>
+			 <span class="err">*</span> <span class="err">Raspberry</span> <span class="err">Pi</span> <span class="err">sensor</span>
+			 <span class="err">*/</span>
+			<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;PS-raspi&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;python-sensor-factory&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;temper.raspi&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;raspberry-pi&quot;</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="err">/**</span>
+			 <span class="err">*</span> <span class="err">Java</span> <span class="err">sensor</span>
+			 <span class="err">*/</span>
+			<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;JS&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;java-sensor-factory&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;temper.java&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;java-sensor-pc&quot;</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="err">/**</span>
+			 <span class="err">*</span> <span class="err">Aggregator</span> <span class="err">component</span>
+			 <span class="err">*/</span>
+			<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;aggregator-factory&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;language&quot;</span> <span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;aggregation&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;gateway&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;properties&quot;</span> <span class="p">:</span> <span class="p">{</span>
+				<span class="nt">&quot;poll.delta&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+			<span class="p">}</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="err">/**</span>
+			 <span class="err">*</span> <span class="err">Aggregator</span> <span class="err">web</span> <span class="err">UI</span>
+			 <span class="err">*/</span>
+			<span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;UI&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;factory&quot;</span> <span class="p">:</span> <span class="s2">&quot;aggregator-ui-factory&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;language&quot;</span> <span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;isolate&quot;</span> <span class="p">:</span> <span class="s2">&quot;web.interface&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;node&quot;</span> <span class="p">:</span> <span class="s2">&quot;gateway&quot;</span><span class="p">,</span>
+			<span class="nt">&quot;properties&quot;</span> <span class="p">:</span> <span class="p">{</span>
+				<span class="nt">&quot;servlet.path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/temper&quot;</span>
+			<span class="p">},</span>
+			<span class="nt">&quot;wires&quot;</span> <span class="p">:</span> <span class="p">{</span>
+				<span class="nt">&quot;_aggregator&quot;</span> <span class="p">:</span> <span class="s2">&quot;aggregator&quot;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="p">]</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<h3 id="cohorte-nodes">COHORTE Nodes</h3>
+
+<p>We have created and prepared the different COHORTE nodes for each of the targeted machines. Each node contains the necessary bundles deployed on the <code>repo</code> directory and configuration files on the <code>conf</code> directory.</p>
+
+<p>
+<div id="download_temper_snapshot"></div> 
+</p>
+
+<p>As first step, we will execute our temper application in a local network area (LAN). You should have the devices with the listed requirements above. However, you can also test your application in only one machine having all the requirements installed (JVM and Python). The <code>raspberry-pi</code> COHORTE node needs a real raspberry-pi device to work properly (some libraries are compiled for ARM platform).</p>
+
+<h3 id="execution">Execution</h3>
+
+<h4 id="temperature-aggregator">Temperature Aggregator</h4>
+
+<p>To have a distributed configuration of COHORTE applications, we need to select one node as a <strong>Top Composer</strong>. It will parse the <em>composition configuration</em> and push orders to the participating nodes to instantiate the different components. </p>
+
+<p>You can create a new Node and start it as a Top Composer, or start any of the provided nodes as a Top Composer (using -t option). </p>
+
+<p>In the following, we choose the <code>gateway</code> node as Top Composer.</p>
+
+<pre>
+gateway$ <b>./run</b> -t
+</pre>
+
+<p>You should start the composition (deployment of components) manually by typing the <code>load</code> command.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">&gt; load</code></pre></div>
+
+<p>We can already test the application by opening a web browser and hiting this address: <code>http://localhost:port/temper</code>. You should however put the right <em>http port</em> of the <code>web.interface</code> isolate executing the web interface (see the <em>temper-demo</em> composition picture above). Type <code>http</code> command in the terminal to have the list of isolates and their <em>http ports</em>.</p>
+
+<p>–IMAGE</p>
+
+<p>You notice that there is no input in the history table as no temperature sensor is active.</p>
+
+<div class="note">
+<span class="note-title">Note</span>
+<p class="note-content">
+Ensure to have COHORTE properly <a href="/docs/1.x/setup">installed on your devices</a>. You should have $COHORT_HOME environment variable set with the full path to the COHORTE installation folder and $COHORTE_HOME/bin folder is added to your $PATH. 
+</p>
+</div>
+
+<h4 id="temperature-sensors">Temperature Sensors</h4>
+
+<p>It’s time now to start the temperature sensors. The provided components provides dummy values for simplicity. You can implement your temperature sensor component as detailed at the end of this tutorial.</p>
+
+<ul>
+  <li>Start the <code>python-sensor-pc</code> node with a different <em>http</em> and <em>shell</em> ports configuration:</li>
+</ul>
+
+<pre>
+python-sensor-pc$ <b>./run</b> 38001 38002 
+</pre>
+
+<p>You will notice new entries in the active devices list of the aggregator web interface corresponding to this newly started sensor node (containing a temperature sensor component).</p>
+
+<p>You can also start the <code>java-sensor-pc</code> node to test it. Ensure to put another http and shell ports configuration.</p>
+
+<p>To test the <code>raspberry-pi</code> node, you should have a real <em>raspberry-pi</em> device connected to the local network. </p>
+
+<p>Notice that you can run copies of java or python sensor nodes in multiple devices without changing anything. </p>
+
+<p><a href="../../../../">Home</a> &gt; <a href="../../">Documentation</a> &gt; <a href="../">Tutorials</a></p>
+
+<script>
+    function loadLatestSnapshots() {
+        $.getJSON( "http://cohorte.github.io/latest_demos_temper.json", function( data ) {            
+            frame1 = "<a class='btn' href='" + data["snapshots"]["temper-distribution"]["files"]["zip"] + "'>temper-distribution.zip</a>";                      
+            $('#download_temper_snapshot').html(frame1);            
+        });
+    }
+    $(document).ready(function() {        
+        loadLatestSnapshots();
+    });
+</script>
+
+
+            <br/>
+            <br/>
+            <br/>
+            
+            <a href="../spellchecker" class="btn float-left" title="Previous page"> Previous </a>
+            
+            
+            <a href="../quiz" class="btn float-right" title="Next page"> Next </a>
+            
+            <hr/>
+            <br/>
+            <br/>
+                
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+
+
+
+
+<div class="footer">
+	<div class="container">
+		<ul>
+			<li><h5>Documentation</h5></li>
+			<li><a href="/documentation/what-is-cohorte.html">What is COHORTE?</a></li>
+			<li><a href="/documentation/getting-started.html">Getting Started</a></li>
+			<li><a href="/documentation/tutorials.html">Tutorials</a></li>
+			<li><a href="/documentation/demonstrations.html">Demonstrations</a></li>
+			<li><a href="/documentation/publications.html">Articles & Publications</a></li>
+			<li><a href="/documentation/guide.html">Reference Guide</a></li>
+		</ul>
+		<ul>
+			<li><h5>Downloads</h5></li>
+			<li><a href="/download/">Stable Release</a></li>
+			<li><a href="/download/.html">Development Release</a></li>
+		</ul>
+		<ul>
+			<li><h5>Community</h5></li>
+			<li><a href="/community/index.html#mailing_lists">Mailing lists</a></li>
+			<li><a href="/community/index.html#github">GitHub</a></li>
+		</ul>
+		<ul>
+			<li><h5>COHORTE</h5></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/news">News Archive</a></li>
+			<li><a href="/license.html">COHORTE License</a></li>
+		</ul>
+		</div>
+		<div class="container">
+		<div class="copyright">
+			<a style="float: left; margin-right: 8px;" href="http://isandlatech.com"><img src="/resources/images/isandlatech-logo-sm-carre.png" alt="isandlaTech logo" /></a>
+			<p style="float: left;"><br/>Copyright &copy; 2011-<span class="current-year"></span> isandla<i>Tech</i> S.A.R.L<br/>3 chemin du vieux chêne. 38240 Meylan, France</p>
+		</div>
+		<div class="cohorte-logo-footer">
+			<span style="font-size:70%; color:gray;"><a href="http://isandlatech.com">isandla<i>Tech</i></a> is the principal sponsor of </span><img src="/resources/images/cohorte-logo-footer.png" alt="COHORTE footer logo" />
+		</div>
+	</div> <!-- container -->
+</div> <!-- footer -->
+
+
+    <!-- jQuery -->
+    <script src="/resources/js/2/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/js/2/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+	<script src="/resources/js/2/cohorte.js" type="text/javascript"></script>
+
+</body>
+
+</html>
+

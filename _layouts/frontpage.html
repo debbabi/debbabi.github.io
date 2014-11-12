@@ -6,200 +6,177 @@ title: COHORTE Project web site
 {% include page_header.html %}
 
 <!-- ***************** Splash + nav ******************* -->
-{% include navbar.html %}
 
- <div id="top" class="jumbotron">
-      <div class="container">
-        <!--h2>We are the specialiste</h2-->
-        <h3>Specialiste in interoperability technology and service oriented development.</h3>
-        <br/>
-        <p><a class="btn btn-primary btn-lg">Contact up <span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
-      </div> <!-- /.container -->
-    </div> <!-- /.jumbotron -->
+<div class="splash">
+  <div class="darkblue-overlay">&nbsp;</div>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="cohorte-logo">
+          <img src="{{ site.baseurl }}/resources/images/cohorte-logo.png" alt="Cohorte Logo" />
+          <!-- <div class="spiral-logo"><img src="{{ site.baseurl }}/resources/img/scala-spiral-white.png"/></div> -->
+          <!-- <div class="scala-text">Scala</div> -->
+        </div>
+        {% include navbar.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div class="splash-text ontop">
+          <h2 style="font-weight: 500;">Resilient Component-based Software Platform</h2>
+          <p class="splash-pitch">
+            COHORTE is a platform for developing and rolling out robust and reliable software.
+            Software produced with COHORTE has a high level of robustness and reliability since 
+            its is made up of a range of components and services protected from one another by 
+            isolation containers. This modular architecture guarantees that software cannot be 
+            paralyzed in the event of failure of one of its components.
+          </p>
+          <br/>
+          <a class="splash-btn" href="{{ site.baseurl }}/docs/1.x/what-is-cohorte">Learn More</a>&nbsp;
+          <a class="splash-btn" href="{{ site.baseurl }}/docs/1.x/tutorials">Getting Started</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="splash-btn-darker" href="{{ site.baseurl }}/downloads/">Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- ***************** getting started steps ******************* -->
+
+<div class="getting-started-box">
+  <div class="bullet-row-1-wrap">
     <div class="container">
-      <h3 id="features" class="subhead">Features</h3>
-      <div class="row benefits">
-        <div class="col-md-4 col-sm-6 benefit">
-          <div class="benefit-ball">
-            <span class="glyphicon glyphicon-home"></span>
+      <div class="row">
+        <div class="span12 getting-started">
+          <h2><span>Using COHORTE</span></h2>
+          <p class="click">&nbsp;click next and previous buttons to switch between steps&nbsp;</p>
+        </div>
+      </div>
+      <div class="getting-started-container-main">
+        <header class="getting-started-onboarding-header">
+
+          <ol class="getting-started-nav">
+            <li class="active" id="getting-started-step1">Architect</li>
+            <li id="getting-started-step2">Implement</li>
+            <li id="getting-started-step3">Plan</li>
+            <li id="getting-started-step4">Prepare</li>
+            <li id="getting-started-step5">Run</li>
+          </ol>
+        </header>
+
+        <div id="getting-started-steps-row">
+          <div class="container">
+            <div class="row">
+            </div>
           </div>
-          <h3>Benefit Title</h3>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-        </div> <!-- /.benefit -->
+        </div>
 
-        <div class="col-md-4 col-sm-6 benefit">
-          <div class="benefit-ball">
-            <span class="glyphicon glyphicon-cloud"></span>
-          </div>
-          <h3>Benefit Title</h3>
-          <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-        </div> <!-- /.benefit -->
+        <div id="hidden-getting-started-step-1">{% include getting-started-step-1.html %}</div>
+        <div id="hidden-getting-started-step-2">{% include getting-started-step-2.html %}</div>
+        <div id="hidden-getting-started-step-3">{% include getting-started-step-3.html %}</div>
+        <div id="hidden-getting-started-step-4">{% include getting-started-step-4.html %}</div>
+        <div id="hidden-getting-started-step-5">{% include getting-started-step-5.html %}</div>
 
-        <div class="col-md-4 col-sm-6 benefit">
-          <div class="benefit-ball">
-            <span class="glyphicon glyphicon-bell"></span>
-          </div>
-          <h3>Benefit Title</h3>
-          <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu.</p>
-        </div> <!-- /.benefit -->
-      </div> <!-- /.row -->
-    </div> <!-- /.container -->
+      <div class="container-main">
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
 
-    <div class="container-alternate">
-      <div class="container">
-        <h3 id="tour-head" class="subhead">Tour</h3>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="tour" class="carousel slide">
-              <ol class="carousel-indicators">
-                <li data-target="#tour" data-slide-to="0" class="active"></li>
-                <li data-target="#tour" data-slide-to="1"></li>
-                <li data-target="#tour" data-slide-to="2"></li>
-                <li data-target="#tour" data-slide-to="3"></li>
-                <li data-target="#tour" data-slide-to="4"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="item active">
-                  <img src="img/stock1.jpg">
-                  <div class="carousel-caption">
-                    Amazing photos provided by <a href="http://unsplash.com">unsplash.com</a>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/stock2.jpg">
-                  <div class="carousel-caption">
-                    Boat in Water
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/stock3.jpg">
-                  <div class="carousel-caption">
-                    Millennium Bridge in London
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/stock4.jpg">
-                  <div class="carousel-caption">
-                    Blurs
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/stock5.jpg">
-                  <div class="carousel-caption">
-                    Santorini Greece
-                  </div>
-                </div>
-              </div>
-
-              <a class="left carousel-control" href="#tour" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-              </a>
-              <a class="right carousel-control" href="#tour" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-              </a>
-            </div> <!-- #tour -->
-          </div> <!-- /.col-md-12 -->
-        </div> <!-- /.row -->
-      </div> <!-- /.container -->
-    </div> <!-- /.container-alternate -->
-
+<!-- ***************** key points ******************* -->
+<div class="bullet-point-box">
+  <div class="bullet-row-1-wrap">
     <div class="container">
-      <h3 id="faqs" class="subhead">Frequently Asked Questions</h3>
-      <div class="row faqs">
-        <p class="col-md-4 col-sm-6">
-          <strong>Lorem ipsum dolor sit amet?</strong><br>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi enim
-          ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-        <p class="col-md-4 col-sm-6">
-          <strong>Lorem ipsum dolor sit amet?</strong><br>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi enim
-          ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-        <p class="col-md-4 col-sm-6">
-          <strong>Lorem ipsum dolor sit amet?</strong><br>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi enim
-          ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-        <p class="col-md-4 col-sm-6">
-          <strong>Lorem ipsum dolor sit amet?</strong><br>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi enim
-          ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-        <p class="col-md-4 col-sm-6">
-          <strong>Lorem ipsum dolor sit amet?</strong><br>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi enim
-          ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-        <p class="col-md-4 col-sm-6">
-          <strong>Lorem ipsum dolor sit amet?</strong><br>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi enim
-          ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-      </div> <!-- /.faqs -->
-    </div> <!-- /.container -->
+      <div class="row">
+        <div class="span12 bullet-point">
+          <h2><span>COHORTE in a Nutshell</span></h2>
+          <p class="click">&nbsp;click the boxes below to see more details&nbsp;</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4 bullet-point" id="key-point-1">
+          <img src="{{ site.baseurl }}/resources/images/key-point-1-icon.png" class="key-point-icon"/>
+          <h3>Service-Oriented Component-based Applications</h3>
+          <p>All system processes are placed into separate components which communicate with each other via services.</p>
+        </div>
+        <div class="span4 bullet-point" id="key-point-2">
+          <img src="{{ site.baseurl }}/resources/images/key-point-5-icon.png" class="key-point-icon"/>
+          <h3>Multi-Language Programming</h3>
+          <p>COHORTE supports both Python and Java. You can develop your application using one of this two languages or a mixture of them.</p>
+        </div>
+        <div class="span4 bullet-point" id="key-point-3">
+          <img src="{{ site.baseurl }}/resources/images/key-point-2-icon.png" class="key-point-icon"/>
+          <h3>Components Distribution</h3>
+          <p>Software Components are seen as black boxes and can be placed anywhere on the COHORTE distributed platform. They use remote services as it  was local calls.</p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
 
-    <div class="container-alternate">
-      <div class="container">
-        <h3 id="about" class="subhead">About Us</h3>
-        <div class="row about">
-          <div class="col-md-10 col-md-offset-1 text-center">
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna.  Ut wisi
-              enim ad minim veniam, quis nostrud exerci tation ullamcorper
-              suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
-              autem vel eum iriure dolor in hendrerit in vulputate velit esse
-              molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-              vero eros et accumsan.
-            </p>
-            <p>
-              Nam liber tempor cum soluta nobis eleifend option congue nihil
-              imperdiet doming id quod mazim placerat facer possim assum. Typi non
-              habent claritatem insitam; est usus legentis in iis qui facit eorum
-              claritatem. Investigationes demonstraverunt lectores legere me lius
-              quod ii legunt saepius.
-            </p>
-          </div> <!-- /.col-md-10 -->
-        </div> <!-- /.row -->
-      </div> <!-- /.container -->
-    </div> <!-- /.container-alternate -->
+  <div id="code-snippet-row1">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
 
-    <footer>
-      <div class="container clearfix">
-        <p class="pull-left">
-          Copyright &copy; Acme Corp 2013
-        </p>
-        <p class="pull-right">
-          a template from <a href="http://coverstrap.com">Coverstrap</a>
-        </p>
-      </div> <!-- /.container -->
-    </footer>
+  <div class="bullet-row-2-wrap">
+    <div class="container">
+      <div class="row">
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script>
-      $(".nav-link").click(function(e) {
-        e.preventDefault();
-        var link = $(this);
-        var href = link.attr("href");
-        $("html,body").animate({scrollTop: $(href).offset().top - 80}, 500);
-        link.closest(".navbar").find(".navbar-toggle:not(.collapsed)").click();
-      });
-    </script>
+        <div class="span4 bullet-point" id="key-point-4">
+          <img src="{{ site.baseurl }}/resources/images/key-point-3-icon.png" class="key-point-icon"/>
+          <h3>Heterogeneous environments</h3>
+          <p>COHORTE supports multiple deployment environments in local area networks or across Internet. It uses an universla messaging framework to integrate the different parts.</p>
+        </div>
+        <div class="span4 bullet-point" id="key-point-5">
+          <img src="{{ site.baseurl }}/resources/images/key-point-4-icon.png" class="key-point-icon"/><br/>
+          <h3>Dynamic Isolation & resilience</h3>
+          <p>COHORTE applications are able to recover and repair themselves automatically for seamless business continuity.</p>
+        </div>                
+        <div class="span4 bullet-point" id="key-point-6">
+          <img src="{{ site.baseurl }}/resources/images/key-point-6-icon.png" class="key-point-icon"/>
+          <h3>Development & Monitoring Tools</h3>
+          <p>COHORTE developers can use their prefered IDE. We provide information about how to integrate COHORTE in their development process.</p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div id="code-snippet-row2">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+  <!--div class="where-to-learn-more">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <a class="splash-btn" href="{{ site.baseurl }}/what-is-cohorte.html">Learn More</a>
+          <p>or visit the <a class="italicize" href="{{ site.baseurl }}/documentation">COHORTE Documentation</a></p>
+        </div>
+      </div>
+    </div>
+  </div-->
+	  <!-- hidden code-snippet content -->
+	<div id="hidden-key-point-1">{% include bullet-key-point-1.html %}</div>
+	<div id="hidden-key-point-2">{% include bullet-key-point-2.html %}</div>
+	<div id="hidden-key-point-3">{% include bullet-key-point-3.html %}</div>
+	<div id="hidden-key-point-4">{% include bullet-key-point-4.html %}</div>
+	<div id="hidden-key-point-5">{% include bullet-key-point-5.html %}</div>
+	<div id="hidden-key-point-6">{% include bullet-key-point-6.html %}</div>
+</div>
+
+
+
+ 
+
+<!-- news and events -->
+
+
+
+-->
 {% include page_footer.html %}
-
