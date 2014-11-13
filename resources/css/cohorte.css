@@ -603,6 +603,14 @@ height: 490px;
   background-image: url('../images/java-color.png');
 }
 
+.menu-choice-cohorte {
+  background-image: url('../images/documentation/cohorte-icon.png');
+}
+
+.menu-choice-concepts {
+  background-image: url('../images/documentation/concepts-icon.png');
+}
+
 .menu-choice-component {
   background-image: url('../images/documentation/components-icon.png');
 }
