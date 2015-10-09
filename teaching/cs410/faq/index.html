@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html land="fr">
+  <head>
+    <title>TP CS410 - Langages et compilation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../style/css/bootstrap.min.css" rel="stylesheet" media="screen">    
+	<link href="../style/css/cs410.css" rel="stylesheet" media="screen">  
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+			<li><a href="../">Projet</a></li>
+			<li class="active"><a href="#">FAQ</a></li>
+			<li><a href="../about/">À propos de</a></li>			
+			</ul>
+			<img src="../images/esisar.gif"/> 
+		</div>
+		<div>
+			<div class="page-header">
+				<h1><a href="../">TP Langages et Compilation</a> </h1>
+			</div>
+			<br/>
+			<h2>Foire aux questions</h2>
+			<p>
+			<ul>
+    		 <li><b>Utiliser Eclipse pour le dévelopement du projet</b><br/>Téléchargez le <a href="JCas.tar.gz">zip suivant</a>, décompressez le sur votre environment de travail, déplacez votre dossier "ProjetCompil" sur le dossier "src" puis importez le projet "JCas" depuis eclipse.<br/> Pensez à mettre à jour le CLASSPATH pour prendre en compte ce nouveau chemin. La compilation (et les testes) se fait toujours depuis la console en utilisant "make".</li>   
+    		 <li><b>BUG : </b> remplacez le fichier "Environ.java" (qui se trouve dans "ProjetCompil/Global/Src") par <a href="Environ.java">ce fichier modifié</a>. Il y avait une erreur dans la méthode afficher.</li>
+    		 <li><b>Problèmes liés à Cobertura</b> : des solutions possibles..<br/>
+				<ul>
+					<li>rajouter l'option -XX:-UseSplitVerifier à la commande java dans le fichier testCouvertureVerif et à tous les fichiers appelés.(Merci à Cyril FISCHER).</li>
+					<li>changer JAVA_HOME pour qu'elle pointe vers la version 1.6 de Java. les étapes sont décrites sur <a href="change_java_home.txt">ce fichier</a>.</li>
+			</ul>
+			</p>
+			<br/><br/>
+		</div>
+	</div> <!-- container -->
+	<br/><br/><br/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--script src="../style/js/jquery.js"></script-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../style/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

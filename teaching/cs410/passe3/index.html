@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html land="fr">
+  <head>
+    <title>TP CS410 - Langages et compilation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../style/css/bootstrap.min.css" rel="stylesheet" media="screen">    
+	<link href="../style/css/cs410.css" rel="stylesheet" media="screen">    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="../">Projet</a></li>
+			<li><a href="../faq/">FAQ</a></li>
+			<li><a href="../about">À propos de</a></li>			
+			</ul>
+			<a href="../"><img src="../images/esisar.gif"/></a>
+		</div>
+		<div>
+			<div class="page-header">
+				<h1><a href="../">TP Langages et Compilation</a> > Passe 3</h1>
+			</div>
+			<br/>			
+			<p/>
+				
+				
+			<h3>1. Introduction </h3>
+
+<p>
+L'objectif est de réaliser UNE passe 3 par groupe d'étudiants (soit 8 à 9 étudiants par groupe). Une des équipes (binôme) fournit les passes 1 et 2.
+</p>
+<p>
+Le but de la passe 3 est de générer du code pour une machine abstraite (cf. <a target="_blanc" href="../ProjetCompil/Global/Doc/MachineAbstraite.txt">MachineAbstraite.txt</a>).
+</p>
+<p>
+On a un programme JCas, contextuellement correct, et on cherche à produire un fichier assembleur qui contient le code correspondant à ce programme.
+</p>
+<p>
+La passe 3 peut ne pas réussir à générer du code ; dans ce cas la compilation doit être interrompue et un message d'erreur affiché, avec le numéro de ligne de l'erreur dans le programme source.
+</p>
+
+<b>Classes fournies</b> (<a href="../Src3.tar.gz">Src3.tar.gz</a>, <a href="../Gencode.tar.gz">Gencode.tar.gz</a>)
+<p>
+La classe principale du compilateur JCas est <code>JCasc</code> ("JCas compiler"), dans le paquetage <code>ProjetCompil.Gencode.Src</code>. Dans le répertoire <code>ProjetCompil/Gencode/Test</code>, la commande <code>jcasc fich.cas</code> produit, si la compilation réussit, un fichier assembleur <code>fich.ass</code>.
+</p>
+<p>
+Ce fichier peut être exécuté par l'interprète de machine abstraite : <code>ima fich.ass</code>. 
+</p>
+<p>
+Le paquetage <code>ProjetCompil.Global.Src3</code> fournit des primitives pour manipuler le programmes assembleur généré. Le programme est une suite de lignes. Une ligne comporte une étiquette, une instruction et un commentaire (chacun de ces éléments étant optionnel). Une instruction comporte une opération est 0, 1 ou 2 opérandes. (cf. classes <code>Prog</code>, <code>Ligne</code>, <code>Inst</code>, <code>Etiq</code>, <code>Operation</code>, <code>Operande</code>, <code>NatureOperande</code>).
+</p>
+
+<hr/>
+
+<a name="transparents"></a>
+<h3>2. Support </h3>
+<p>
+
+<table>
+	<tr><td><a href="../ProjetCompil/Global/Doc/MachineAbstraite.txt" target="_blanc"><img src="txt.gif"></a></td><td><a href="../ProjetCompil/Global/Doc/MachineAbstraite.txt" target="_blanc">MachineAbstraite.txt</a></td><td><a href="svn/utilisation/" target="_blanc"><img src="svn.gif"></a></td><td><a href="svn/utilisation/" target="_blanc">Utilisation de svn</a></td></tr>
+	<tr><td><a href="../ProjetCompil/Global/Doc/Ima.txt" target="_blanc"><img src="txt.gif"></a></td><td><a href="../ProjetCompil/Global/Doc/Ima.txt" target="_blanc">Ima.txt</a></td><td><a href="../ProjetCompil/Html/" target="_blanc"><img src="html.gif"></a></td><td><a href="../ProjetCompil/Html/" target="_blanc">Lien sur les javadocs</a></td></tr>
+	<tr><td><a href="http://membres-liglab.imag.fr/oriat/Compil/Cours/cours_38.html" target="_blanc"><img src="html.gif"></a></td><td><a href="http://membres-liglab.imag.fr/oriat/Compil/Cours/cours_38.html" target="_blanc">Cours de compilation<br/>chapitre sur la génération de code</a></td><td></td><td></td></tr>
+	
+</table>
+<hr/>
+
+<a name="planning"></a>
+<h3>3. Planning  détaillé</h3>
+<p>
+ <ul>
+  <li><code>Séance 7 : Préparation de l'environnement de travail</code>
+      <ol>
+        <li><a href="equipes/">Constitution des équipes</a></li>
+        <li><a href="svn/">Création d'un dépot svn centralisé</a> (pour le partage du code source entre les membres d'équipe)</li>		
+        <li><a href="ima/">Installation de la machine abstraite</a> (chaque binôme)</li>
+        <li>Lecture de la documentation: <a href="../ProjetCompil/Global/Doc/MachineAbstraite.txt">MachineAbstraite.txt</a>, <a href="../ProjetCompil/Global/Doc/Ima.txt">Ima.txt</a>, <a href="http://membres-liglab.imag.fr/oriat/Compil/Cours/cours_38.html">cours de compilation</a>, <a href="svn/utilisation/">svn</a>, ...</li>
+      </ol>
+  </li><br/>
+  <li><code>Séance 8 : Architecture</code>
+      <ul>
+        <li>Création des interfaces : classes et méthodes publiques de chaque classe. Chaque méthode est créée avec un corps vide et chaque classe est placée dans le projet.</li>
+        <li>Choix des algorithmes de génération de code (voir le cours de compilation)</li>
+        <li>Affectation des tâches pour chaque binôme</li>
+        <li>Rédaction des pages de documentation  
+					<ul>
+						<li>Tâches / Binômes</li>
+						<li>Planning : diagramme de gantt</li>
+						<li>L'architecture du projet : diagramme de classes, séquence, ...</li>
+					</ul>
+				</li>
+        <li>Début de développement du code</li>
+      </ul>
+  </li><br/>
+  <li><code>Séance 9 : Développement</code>
+      <ul>
+        <li>Développement du code</li>
+        <li>Premiers tests</li>
+        <li>Debug</li>
+      </ul>
+  </li><br/>
+  <li><code>Séance 10 : Tests</code>
+      <ul>
+        <li>Fin de développement</li>
+        <li>Ecriture de tests plus complexes</li>
+        <li>Debug</li>
+      </ul>
+  </li><br/>
+  <li><code>Séance 11 : Fin du projet</code>
+      <ul>
+        <li>Ecriture d'une batterie complète de tests</li>
+        <li>Objectif : obtenir un compilateur zéro-défaut</li>
+      </ul>
+  </li>
+
+ </ul> 
+</p>
+<hr/>
+<a name="rendu"></a>
+<h3>4. Rendu de la passe 3</h3>
+<p>
+<ul>
+<li>
+S'assurer que toutes les modifications de tous le binômes ont été mis à jours dans la source globale.
+<li>
+L'enseignant effectuera un <code>checkout</code> du source à la date indiquée dans le planning. Aucune autre modification effectuée après cette date ne sera prise en compte.
+</ul>
+</p>	
+				
+
+			
+		</div>
+	</div> <!-- container -->
+	<br/><br/><br/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--script src="../style/js/jquery.js"></script-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../style/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,6 @@
+PATH=/opt/Java6/jdk1.6.0_25/bin:$PATH
+export JAVA_HOME=/opt/Java6/jdk1.6.0_25
+export CLASSPATH=/opt/Java6/jdk1.6.0_25/lib
+export CLASSPATH=$CLASSPATH:$HOME:$HOME/ProjetCompil/Global/Bin/java-cup-11a-runtime.jar:$HOME/ProjetCompil/Global/Bin/JFlex.jar:.
+
+# recompiler le projet et relancer le script testCouvertureVerif

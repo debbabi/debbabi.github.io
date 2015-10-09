@@ -1,0 +1,5 @@
+AuthName "Contactez l'enseignant du TP pour avoir les logins"
+AuthType Basic
+AuthUserFile /customers/1/9/5/esisar.net/httpd.www/cs410/.htpasswd
+AuthGroupFile /dev/null 
+require valid-user

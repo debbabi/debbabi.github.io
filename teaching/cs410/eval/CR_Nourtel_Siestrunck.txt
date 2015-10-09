@@ -1,0 +1,84 @@
+Bonjour,
+
+Voici un retour sur votre compilateur et vos tests.
+
+Nous évaluons d'une part le compilateur (à l'aide d'un jeu de tests) et 
+d'autre part, de façon indépendante, votre jeux de tests pour la passe 2.
+
+Les tests sont évalués par une mesure de couverture sur un compilateur 
+de référence et également à l'aide de "mutants". Un mutant est un compilateur
+pour le langage JCas qui comporte exactement un bug. 
+Nous disposons de 46 mutants.
+Pour chaque mutant, on examine si votre jeu de tests permet ou non 
+de détecter le bug correspondant. Si c'est le cas, on dit que le jeu 
+de tests "tue" le mutant. L'objectif est donc de tuer le maximum de mutants.
+
+Remarque 
+Dans la partie sur les mutants, une phrase du type
+   "ne teste pas XXX" 
+ne signifie pas que vous ne testez pas du tout le point XXX, mais que
+vous ne le testez pas suffisamment. Plus précisément, nous avons un compilateur qui comporte un bug concernant le point XXX et votre jeu de tests n'a pas 
+permis de le mettre en évidence. 
+
+Cordialement,
+
+Les enseignants du projet Compilation
+
+=============================================================================
+I. Compilateur
+
+Nombre d'erreurs en passe 2 : 24
+Nombre d'erreurs concernant des numéros de ligne : 0
+
+Exemples de programmes provoquant une défaillance :
+
+-----------------------------
+program 
+begin
+   integer := 1 ; 
+end.
+-----------------------------
+program  
+
+begin
+   if 1 then 
+      null ; 
+   end ; 
+end. 
+-----------------------------
+program
+   i : boolean ; 
+begin
+   write(i) ; 
+end.   
+-----------------------------
+
+=============================================================================
+Nombre d'erreurs de décors : 3
+ - Décor nul sur identificateur (utilisation)
+ - Type incorrect dans defn sur identificateur (déclaration)
+ - Type incorrect sur un Noeud.Affect
+
+=============================================================================
+II. Tests
+
+Mutants tués : 30 / 46
+ - Ne teste pas la compatibilite arithmetique autre-autre (autre=bool/string/tab)
+ - Ne teste pas la compatibilite arithmetique real-autre (autre=bool/string/tab)
+ - Ne teste pas la compatibilite arithmetique real-real
+ - Ne teste pas si la premiere expression d'un 'for' est de type entier
+ - Ne teste pas si l'indice de boucle est bien un identificateur de type entier
+ - Ne teste pas si la condition d'une conditionnelle est booleenne
+ - Ne teste pas si la condition d'un 'tant que' est booleenne
+ - Ne teste pas que la nature d'un identificateur apparaissant dans une expression est 'variable' ou 'constante'
+ - Ne teste pas si le type de l'indice est un intervalle dans une indexation
+ - Ne teste pas si l'argument d'une lecture est entier ou reel
+ - Ne teste pas si le type de la place est de type tableau dans une indexation
+ - Ne teste pas la compatibilite de l'affectation pour les tableaux P2B_Affect_Compatible_Tableau_Indice
+ - Ne teste pas l'equivalence des indices pour la compatibilite de l'affectation dans les tableaux
+ - Ne teste pas la compatibilite pour la division reelle
+ - Ne teste pas la nature 'type'
+ - Ne teste pas la valeur du moins unaire dans les expressions constantes
+
+=============================================================================
+

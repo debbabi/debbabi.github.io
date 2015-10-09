@@ -1,0 +1,5 @@
+AuthName "CS316"
+AuthType Basic
+AuthUserFile /customers/1/9/5/esisar.net/httpd.www/cs316/notes/.htpasswd
+AuthGroupFile /dev/null 
+require valid-user

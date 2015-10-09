@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html land="fr">
+  <head>
+    <title>TP CS410 - Langages et compilation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="style/css/bootstrap.min.css" rel="stylesheet" media="screen">   
+
+	<link href="style/css/cs410.css" rel="stylesheet" media="screen">    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="#">Projet</a></li>
+			<li><a href="faq/">FAQ</a></li>
+			<li><a href="about/">À propos de</a></li>			
+			</ul>
+			<img src="images/esisar.gif"/> 
+		</div>
+		<div>
+			<div class="page-header">
+				<h1>TP Langages et Compilation</h1>
+			</div>
+			<br/>
+			<div class="hero-unit">
+				<h1>Notes TP</h1>				
+				<p><a href="eval/CS410-NOTES.html" class="btn btn-primary btn-large">Note finale TP Compilation</a> </p>
+				<h1>Notes passe 2</h1>				
+				<p><a href="eval/synthese.pdf" class="btn btn-primary btn-large">Synthèse</a> <a href="eval/"  class="btn btn-default">Détail pour chaque étudiant</a></p>
+			</div>
+			<h2>Vue d’ensemble</h2>
+			<p>
+			Le compilateur à développer, appelé JCas, comporte trois passes (le programme va être parcouru trois fois). 
+			<div class="row well">
+				<div class="col-xs-4 col-md-3 "><a href="intro/" class="btn btn-default">Introduction</a><p>
+					<ul><li>Récupération et installation du projet</li></ul>
+					</p></div>
+				<div class="col-xs-4 col-md-3"><a href="passe1/" class="btn btn-default">Passe 1</a><p>
+					<ul>
+						<li>Analyse lexicale</li>
+						<li>Analyse syntaxique</li>
+						<li>Construction de l’arbre abstrait du programme</li>
+					</ul>
+					</p></div>
+				<div class="col-xs-4 col-md-3"><a href="passe2/" class="btn btn-default">Passe 2</a><p>
+					<ul>
+						<li>Vérifier qu’un programme JCas est contextuellement correct.</li>
+						<li>Décorer l’arbre abstrait du programme. </li>
+					</ul>
+					</p></div>
+				<div class="col-xs-4 col-md-3" ><a href="passe3/" class="btn btn-success">Passe 3</a><p>
+					<ul>
+						<li>Parcourir l’arbre abstrait décoré une seconde fois et produire du code exécutable. </li> 
+					</ul>
+					</p></div>
+			</div>
+			
+			</p>
+			<h2>Planning</h2>
+			<p>
+			Voici le calendrier de cette année 2013-2014. Vous devriez aussi consulter le calendrier officiel de l'école (ADE) pour des changements éventuelles non prévus.
+			</p>
+			<p>
+				<table class="table table-condensed table-hover table-striped">			
+					<tr class="active"><th  >Séance</th><th>Date</th><th style="width:200px;">Salle</th><th>Objectif</th></tr>
+					<tr class="active"><td>1</td><td><span class="label label-info">Ven. 20/09/2013</span></td><td>TP1 <span class="label label-default">B145</span>, TP2 <span class="label label-default">B125</span></td><td><a href="intro/">Introduction</a> + début <a href="passe1/">passe 1</a></td></tr>
+					<tr class="active"><td>2</td><td><span class="label label-info">Ven. 27/09/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B145</span></td><td>Fin <a href="passe1/">passe 1</a></td></tr>
+					<tr class="active"><td>3</td><td><span class="label label-info">Ven. 04/10/2013</span></td><td>TP1 <span class="label label-default">B125</span>, TP2 <span class="label label-default">B145</span></td><td>Début <a href="passe2/">passe 2</a></td></tr>
+					<tr class="active"><td>4</td><td><span class="label label-info">Ven. 11/10/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B145</span></td><td><a href="passe2/">Passe 2</a></td></tr>
+					<tr class="active"><td>5</td><td><span class="label label-info">Ven. 18/10/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B145</span></td><td><a href="passe2/">Passe 2</a></td></tr>
+					<tr class="active"><td>6 </td><td><span class="label label-info">Ven. 25/10/2013</span></td><td>TP1 <span class="label label-default">B145</span>, TP2 <span class="label label-default">B125</span></td><td>Fin <a href="passe2/">passe 2</a> : <span class="label label-danger">à faire</span> <a href="cobertura">test avec Cobertura</a><br/><p class="text-danger"><span class="label label-warning">Warning</span> Les passes 1 et 2 du projet sont à rendre le vendredi 25 octobre, avant 18h.</p></td></tr>
+					<tr class="active"><td>7</td><td><span class="label label-info">Ven. 08/11/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B125</span></td><td><a href="passe3/">Passe 3</a> : Préparation de l'environnement de travail collaboratif</td></tr>
+					<tr class="active"><td>8</td><td><span class="label label-info">Ven. 15/11/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B145</span></td><td><a href="passe3/">Passe 3</a> : Architecture</td></tr>
+					<tr class="active"><td>9</td><td><span class="label label-info">Ven. 22/11/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B125</span></td><td><a href="passe3/">Passe 3</a> : Développement</td></tr>
+					<tr class="success"><td>10</td><td><span class="label label-info">Ven. 29/11/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B145</span></td><td><a href="passe3/">Passe 3</a> : Tests</td></tr>
+					<tr><td>11</td><td><span class="label label-info">Ven. 06/12/2013</span></td><td>TP1 <span class="label label-default">B141</span>, TP2 <span class="label label-default">B125</span></td><td><a href="passe3/">Passe 3</a> : Fin du projet.<br/><p  class="text-danger"><span class="label label-warning">Warning</span> La passe 3 du projet est à rendre le vendredi 06 décembre, avant 18h.</p></td></tr>
+					
+				</table>
+			</p>
+			
+			
+
+
+			<h2>Ressources</h2>
+			<p>
+				<ul>									
+					<li><a href="ProjetCompil.tar.gz">ProjetCompil.tar.gz</a> (Code source de base)</li>
+					<li><span class="label label-danger">pdf</span> <a href="Projet_Compil.pdf">Spécifications</a>
+						<ul>
+							<li>  <a href="ProjetCompil/Global/Doc/Exemples.cas" target="_blanc">Exemples.cas</a></li>
+							<li>  <a href="ProjetCompil/Global/Doc/Lexicographie.txt" target="_blanc">Lexicographie.txt</a></li>
+							<li>  <a href="ProjetCompil/Global/Doc/Syntaxe.txt" target="_blanc">Syntaxe.txt</a></li>
+							<li>  <a href="ProjetCompil/Global/Doc/Context.txt" target="_blanc">Context.txt</a></li>
+							<li>  <a href="ProjetCompil/Global/Doc/ArbreAbstrait.txt" target="_blanc">ArbreAbstrait.txt</a></li>
+							<li>  <a href="ProjetCompil/Global/Doc/ArbreEnrichi.txt" target="_blanc">ArbreEnrichi.txt</a></li>
+							<li>  <a href="ProjetCompil/Global/Doc/MachineAbstraite.txt" target="_blanc">MachineAbstraite.txt</a></li>
+						</ul>
+					</li>
+					<li> <a href="ProjetCompil/Html/index.html">Lien sur les javadocs</a> (mis à jour pour la passe 3 avec le nouveau paquetage <code>ProjetCompil.Global.Src3</code>).
+					<li> <a href="http://jflex.de/manual.html">Manuel de JFlex</a></li>
+					<li> <a href="http://www2.cs.tum.edu/projects/cup/manual.html">Manuel de Cup</a>
+					<li> <a href="http://svnbook.red-bean.com/">Documentation sur SVN</a></li>
+					<li> <a href="http://membres-liglab.imag.fr/oriat/Compil">Cours de compilation de l'Ann&eacute;e Sp&eacute;ciale Informatique</a>
+					<ul>
+					<li>
+						Voir en particulier le <a href="http://membres-liglab.imag.fr/oriat/Compil/Cours/cours_38.html">chapitre sur la g&eacute;n&eacute;ration de code</a>
+					</li>
+					</ul>
+				</ul>
+			</p>
+			
+			<h2>Enseignants</h2>
+			<p>
+				<ul>
+					<li>Bassem DEBBABI (Bassem.Debbabi@lcis.grenoble-inp.fr)  <span class="label label-default">TP1</span></li>
+					<li>Mouna TKA (mouna.tka@lcis.grenoble-inp.fr) <span class="label label-default">TP2</span></li>
+				</ul>
+			</p>
+			<br/><br/>
+		</div>
+	</div> <!-- container -->
+	<br/><br/><br/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="style/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="style/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

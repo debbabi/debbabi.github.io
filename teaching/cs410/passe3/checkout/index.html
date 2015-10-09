@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<meta charset="utf-8">
+	<head>
+		<title>Bassem Debbabi Personal Web Site</title>
+
+	<!-- =====================
+       TEACHING PAGE > CS410 > PASSE 3 > checkout
+       ===================== -->
+       
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+      <meta name="description" content="">
+      <meta name="author" content=""> 
+	    <meta name="google-translate-customization" content="38586b32336dc789-2188265041428b65-g0f0867c14f8c3a6d-f"></meta>
+	    <!-- Styles -->
+	    <link href="../../../../../../stylesheets/twitter-bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">  
+	    <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+        }
+      </style>
+      <link href="../../../../../../stylesheets/twitter-bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="../../../../../../stylesheets/twitter-bootstrap/docs/assets/css/docs.css" rel="stylesheet">
+      <link href="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+	    <!--link href="stylesheets/twitter-bootstrap/docs/assets/css/example-fixed-layout.css" rel="stylesheet"-->  
+	    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->  
+	    <!--[if lt IE 9]>  
+	    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>  
+	    <![endif]-->  
+	    <!-- Le fav and touch icons -->  
+
+      <link href="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/google-code-prettify/prettify.js"></script>
+
+	</head>
+
+  <body data-spy="scroll" data-target=".subnav" data-offset="50" onload="prettyPrint()">
+		
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">		
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>					
+					<a class="brand" href="../../../../../../">debbabi.net</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="../../../../../../">Home</a></li>
+							<li><a href="../../../../../../research/">Research</a></li>
+							<li><a href="../../../../../../publications/">Publications</a></li>
+							<li class="active"><a href="../../../../../../teaching/">Teaching</a></li>
+							<li><a href="../../../../../../misc/">Misc</a></li>
+						</ul>
+<!--
+						<div id="google_translate_element" class="pull-right"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+-->						
+
+					</div><!--/.nav-collapse -->
+    		</div><!--/.container -->
+			</div><!--/.navbar-inner -->
+		</div><!--/.navbar -->		
+
+<div class="container">
+<a name="top"></a>
+<ul class="breadcrumb">
+  <li>
+    <a href="../../../">Teaching</a> <span class="divider">/</span>
+  </li>
+  <li><a href="../../">CS410</a></li> <span class="divider">/</span>
+  <li><a href="../">Passe 3</a></li> <span class="divider">/</span>
+  <li class="active">checkout</li>
+</ul>
+
+
+<div class="page-header">
+<h1 >Projet Compilation et Génie Logiciel</h1>
+</div>
+
+
+<div class="row">
+  <div class="span3">
+   	<div class="well sidebar-nav">
+    <ul class="nav nav-list">
+      <li class="nav-header">Navigation</li>
+      <li><a href="../../"><i class="icon-home"></i> Introduction</a></li>
+      <li><a href="../../planning/"><i class="icon-calendar"></i> Planning</a></li>
+      <li><a href="../../manuels/"><i class="icon-book"></i> Manuels</a></li>
+      <li class="nav-header">Etapes</li>
+      <li><a href="../../passe1/"><i class="icon-check"></i> Passe 1</a></li>
+      <li><a href="../../passe2/"><i class="icon-check"></i> Passe 2</a></li>
+      <li class="active"><a href="../../passe3/"><i class="icon-check icon-white"></i> Passe 3</a></li>                 
+    </ul> 
+    </div>
+    
+  </div>
+  <div class="span9">
+  <h2 class="page_title"><a href="../">Passe 3</a> - Récupération du projet et compilation</h2> 
+ 
+
+
+<p/>
+
+<ul>
+<li>
+   Récupérer le projet depuis le dépot svn comme suit (remplacer <code>votre_projet</code> par le nom choisi pour votre projet, et <code>bassem.debbabi@gmail.com</code> par votre adresse Gmail):<br/><br/>
+   <pre>svn checkout https://votre_projet.googlecode.com/svn/trunk/ votre_projet --username bassem.debbabi@gmail.com</pre>
+
+Si le terminal vous demande un mot de passe, entrez celui que Google vous a généré ; celui-ci se trouve dans la page suivante sur Google code: <a href="https://code.google.com/hosting/settings">https://code.google.com/hosting/settings</a>	<br/>
+<br/>
+<li>
+Dans le fichier <code>.bash_profile</code>, modifier le 
+<code>CLASSPATH</code> : Remplacer <code>$HOME</code> par <code>$HOME/votre_projet</code>
+
+<li> Recompiler tout le projet : <br>
+<code>cd ~/votre_projet</code><br>
+<code>make</code> # Compilation<br>
+<code>make html</code> # Regénération de la documentation Html
+</ul>
+
+
+
+<br/>
+<br/>
+<p>
+<a href="../svn/utilisation/"><img src="../../svn.gif"/> Voir la documentation sur l'utilisation de subversion</a>
+</p>
+
+</div>
+</div>
+<ul class="breadcrumb">
+   <li>
+    <a href="../../../">Teaching</a> <span class="divider">/</span>
+  </li>
+  <li><a href="../../">CS410</a></li> <span class="divider">/</span>
+  <li><a href="../">Passe 3</a></li> <span class="divider">/</span>
+  <li class="active">checkout</li>
+  <span class="pull-right"><a href="#top">Haut de page</a></span>
+</ul>
+
+			<hr/>
+		  <footer>
+         <p>
+          <div class="pull-right">
+             <img src="../../jcas.png" />  <img src="../../esisar_small.gif"/><br/>
+         </div>
+         &copy; 2009-2012 Debbabi Bassem. All Rights Reserved </p>
+      </footer>
+
+</div><!--/.container -->	
+
+		<!-- Modals 
+		================================================== -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/jquery.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-transition.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-alert.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-modal.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-tab.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-popover.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-button.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/bootstrap-typeahead.js"></script>
+
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="../../../../../../stylesheets/twitter-bootstrap/docs/assets/js/application.js"></script>
+
+  </body>
+
+</html>

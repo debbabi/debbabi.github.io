@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html land="fr">
+  <head>
+    <title>TP CS410 - Langages et compilation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../../style/css/bootstrap.min.css" rel="stylesheet" media="screen">    
+	<link href="../../style/css/cs410.css" rel="stylesheet" media="screen">    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="../">Projet</a></li>
+			<li><a href="../../faq/">FAQ</a></li>
+			<li><a href="../../about">À propos de</a></li>			
+			</ul>
+			<a href="../../"><img src="../../images/esisar.gif"/></a>
+		</div>
+		<div>
+			<div class="page-header">
+				<h1><a href="../../">TP Langages et Compilation</a> > <a href="../">Passe 3</a></h1>
+			</div>
+			<br/>			
+			<p/>
+    
+  </div>
+  <div class="span9">
+  <h2 class="page_title">Installation de l'interprète de la machine abstraite (ima)</h2> 
+ 
+
+
+<p/>
+L'interprète de machine abstraite est un programme Ada. Vous devez donc avoir 
+le compilateur Ada (commande <code>gnatmake</code>) pour l'utiliser.
+
+
+<ul>
+<li>
+<a href="https://libre.adacore.com/libre/download/">Installer le compilateur Gnat</a>  (sur vos machines personnelles)<br>
+Cliquer sur "Free Software or academic development"<br>
+"Build your download package"<br>
+Sélectionner votre plate-forme, puis sélectionner le fichier binaire de "GNAT_GPL"<br>
+Terminer l'installation...<br><br>
+</li>
+<li>
+Installer la machine abstraite<br>
+<a href="../../Interp_MA.tar.gz">Téléchager les sources de la machine abstraite</a>
+<br>
+<code>cd</code><br>
+<code>gunzip Interp_MA.tar.gz</code><br>
+<code>tar xvf Interp_MA.tar</code><br>
+<code>cd Interp_MA/Src</code><br>
+<code>make</code></br><br>
+L'exécutable <code>ima</code> se trouve dans <code>Interp_MA/Exec</code><br><br>
+<code>cd</code><br>
+<code>cp ~/Interp_MA/Exec/ima ~/ProjetCompil/Bin</code><br><br>
+</li>
+<li>Tester la machine abstraite<br>
+Créer le fichier <code>essai.ass</code> contenant les lignes<br/><br/>
+
+<pre>
+WSTR "ok"
+WNL
+HALT
+</pre>
+
+<br>Effectuer la commande
+<code>ima essai.ass</code><br>
+Cette commande doit afficher "ok".
+</ul>
+La documentation utilisateur de la machine abstraite se trouve dans 
+<a href="../../ProjetCompil/Global/Doc/Ima.txt">ProjetCompil/Global/Doc/Ima.txt</a>.
+
+<br/>
+<br/>
+
+
+		</div>
+	</div> <!-- container -->
+	<br/><br/><br/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--script src="../style/js/jquery.js"></script-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../style/js/bootstrap.min.js"></script>
+  </body>
+</html>

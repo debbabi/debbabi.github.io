@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html land="fr">
+  <head>
+    <title>TP CS410 - Langages et compilation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../../../style/css/bootstrap.min.css" rel="stylesheet" media="screen">    
+	<link href="../../../style/css/cs410.css" rel="stylesheet" media="screen">    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="../">Projet</a></li>
+			<li><a href="../../../faq/">FAQ</a></li>
+			<li><a href="../../../about">À propos de</a></li>			
+			</ul>
+			<a href="../../../"><img src="../../../images/esisar.gif"/></a>
+		</div>
+		<div>
+			<div class="page-header">
+				<h1><a href="../../../">TP Langages et Compilation</a> > <a href="../../">Passe 3</a></h1>
+			</div>
+			<br/>			
+			<p/>
+			
+  <h2 class="page_title">Utilisation de svn</h2> 
+ 
+<h4>Utilisation de subversion</h4>
+
+Afin de permettre le d&eacute;veloppement en parall&egrave;le (en particulier la
+compilation) des diff&eacute;rentes classes, chaque &eacute;quipe d&eacute;veloppera 
+sa (ou ses) classe(s), en commen&ccedil;ant pas travailler sur la sp&eacute;cification, 
+autrement dit la signature des m&eacute;thodes publiques de sa classe.
+Lors de la premi&egrave;re version de chaque classe, les m&eacute;thodes ont un corps
+vide. De cette fa&ccedil;on toutes les &eacute;quipes peuvent commencer &agrave; compiler 
+leur code.
+<br><br>
+<br>
+
+Une fois l'archive subversion créée (par le coordinateur), 
+chaque étudiant crée sa propre arborescence par la commande 
+<ul><code>svn checkout url_du_depot</code></ul>
+
+Un étudiant souhaitant transmettre des modifications aux autres &eacute;tudiants
+doit mettre à jour l'archive, par la commande
+
+<ul>
+<code>
+svn commit
+</code>
+</ul>
+
+Un étudiant souhaitant récupérer les modifications intervenues dans l'archive
+le fait au moyen de la commande
+
+<ul>
+<code>
+svn update
+</code>
+</ul>
+
+Un fichier nouvellement créé doit être enregistré dans l'archive, par la
+commande
+
+<ul>
+<code>
+svn add nom-du-fichier <br>
+svn add nom-du-repertoire
+</code>
+</ul>
+(le fichier sera effectivement installé dans l'archive au prochain 'commit').
+<br>
+<br>
+
+Dans le projet, l'archive contient essentiellement les fichiers sources
+(fichiers <code>.java</code> dans les répertoires <code>Src</code> et 
+les fichiers de test (le contenu des répertoires <code>Test</code>).
+
+<br><br>
+
+Outre la possibilité de travail à plusieurs, svn offre un mécanisme de
+gestion de versions. La commande
+<code>'svn commit'</code>
+enregistre dans l'archive la
+nouvelle version (le terme exact est "révision") des fichiers modifiés, mais
+les révisions précédentes y sont encore présentes. Les révisions successives
+d'un fichier sont numérotées 1, 2, 3 ... Il est possible de récupérer une
+révision quelconque d'un fichier. Il est également possible de consulter les
+différences entre deux révisions d'un fichier, ainsi que l'historique des
+révisions d'un fichier.
+
+<br><br>
+
+Une question délicate est de savoir quand lancer
+'<code>svn commit</code>' et
+'<code>svn update</code>'.
+Il faut à la fois éviter que les versions de travail des diff&eacute;rents &eacute;tudiants
+ne divergent trop ('commit'-'updat&eacute; pas assez fréquents) et éviter de polluer
+le travail des autres avec de nombreuses erreurs ('commit' trop rapide).
+Une politique acceptable est de convenir que 'updat&eacute; doit être fait le plus
+souvent possible, mais que 'commit' ne doit être fait que lorsque le programme
+se compile sans erreur et qu'il n'y a pas de régression (i.e.  lorsqu'il passe
+au moins tous les tests que la version précédente passait).
+
+<br><br>
+
+L'utilisation de subversion ne remplace en aucun cas la communication
+d'informations à l'intérieur de l'équipe. Il est clair qu'il est
+toujours important de savoir qui est en charge de quoi. Il est
+également toujours déconseillé que deux étudiants travaillent
+simultanément sur le même fichier. &Agrave; un
+instant donné, un fichier est sous la responsabilité d'un et un seul
+étudiant, mais cette responsabilité peut évoluer au cours du temps.
+
+<h4> Conflits </h4>
+
+Si deux utilisateurs modifient la même ligne dans le même fichier,
+il peut se produire un conflit. Cela apparaît lorsque la commande
+<ul>
+<code>svn update</code>
+</ul>
+répond par un message du type
+<ul>
+<code><font color="#CC0000">C</font> <em>nom_fichier</em></code>
+</ul>
+Le "<code>C</code>" indique qu'il y a un
+conflit sur le fichier
+<code><em>nom_fichier</em></code>.
+Lorsqu'on édite ce fichier, on trouve des lignes de la forme suivante :
+
+<ul>
+<code><font color="#0000AA">
+   &lt;&lt;&lt;&lt;&lt;.mine <br>
+   <font color="#CC0000">Ici une ligne modifiée par l'utilisateur 1 </font><br>
+   ======= <br>
+   <font color="#CC0000">Ici la même ligne modifiée différemment par l'utilisateur 2 </font><br>
+   &gt;&gt;&gt;&gt;&gt;.r3
+</font></code>
+</ul>
+
+Entre
+<code>
+<font color="#0000AA">
+   &lt;&lt;&lt;&lt;&lt;.mine
+</font>
+</code>
+et
+<code>
+<font color="#0000AA">
+   =======
+</font>
+</code>
+vous trouvez votre code.
+Entre
+<code>
+<font color="#0000AA">
+=======
+</font>
+</code>
+et
+<code>
+<font color="#0000AA">
+&gt;&gt;&gt;&gt;&gt;.r3
+</font>
+</code>
+vous avez le code qui entre en conflit avec votre code.
+<br><br>
+
+Pour résoudre le conflit, il faut supprimer toutes ces lignes et mettre
+à la place la (ou les) ligne(s) correcte(s). Faire ensuite la commande :
+<ul>
+<code><font color="#0000AA">svn resolved <em>nom_fichier</em></font></code>
+</ul>
+pour indiquer à svn que vous avez résolu le conflit.
+Vous pouvez enfin faire :
+<ul>
+<code>
+<font color="#0000AA">
+   svn update<br>
+   svn commit
+</font>
+</code>
+</ul>
+
+
+<h4> Commandes svn utiles pour le projet </h4>
+
+<code><font color="#0000AA">
+svn checkout url_du_depot
+</font></code>
+<ul>
+(à faire normalement une seule fois, au début, depuis votre home-directory).
+   Installe la version initiale du projet depuis l'archive
+</ul>
+<br>
+
+   (1) <code><font color="#0000AA"> svn update </font></code><br>
+   (2) <code><font color="#0000AA"> svn update fichier_1 ... </font></code>
+<ul>
+   Met à jour
+<ul>
+   (1) le répertoire courant et tous ses sous-répertoires <br>
+   (2) les fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+   à partir de la dernière révision enregistrée dans l'archive.
+</ul>
+<br>
+
+   (1) <code><font color="#0000AA"> svn commit </font></code><br>
+   (2) <code><font color="#0000AA"> svn commit fichier_1 ... </font></code>
+<ul>
+Met à jour l'archive à partir
+<ul>
+   (1) du répertoire courant et de tous ses sous-répertoires <br>
+   (2) des fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+Un message de 'log' est demandé pour renseigner les modifications
+intervenues.
+</ul>
+<br>
+
+<code><font color="#0000AA">
+svn add fichier_1 ...
+</font></code>
+<ul>
+Enregistre les fichiers ou répertoires fichier_1, ... dans l'archive,
+   sans les y recopier. La recopie deviendra effective au prochain 'commit'
+</ul>
+<br>
+<code><font color="#0000AA">
+svn remove fichier_1 ...
+</font></code>
+<ul>
+Supprime les fichiers fichier_1, ... de l'archive.
+</ul>
+<br>
+
+<code><font color="#0000AA">
+svn mv fichier_source fichier_cible
+</font></code>
+<ul>
+Renomme le fichier fichier_source en fichier fichier_cible
+</ul>
+<br>
+
+(1) <code><font color="#0000AA"> svn status [-u] </font></code><br>
+(2) <code><font color="#0000AA"> svn status [-u] fichier_1 ...</font></code>
+<ul>
+Affiche le statut des copies locales
+<ul>
+   (1) de tous les fichiers du répertoire courant et de ses sous-répertoires <br>
+   (2) des fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+par rapport au contenu de l'archive (à jour, modifié localement, modifié
+   dans l'archive, ...)<br>
+ATTENTION : sans l'option '-u', il n'y a pas d'accès à l'archive, et on
+   n'obtient que les fichiers modifiés localement (en particulier on ne sait
+   pas si un fichier a été modifié dans l'archive).
+</ul>
+<br>
+
+
+(1) <code><font color="#0000AA"> svn log </font></code><br>
+(2) <code><font color="#0000AA"> svn log fichier_1 ...</font></code>
+<ul>
+Affiche les informations sur les révisions successives
+<ul>
+(1) de tous les fichiers du répertoire courant et de ses sous-répertoires <br>
+(2) des fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+(numéros de révisions et messages de 'log' entrés lors des 'commit')
+</ul>
+<br>
+(1) <code><font color="#0000AA"> svn diff </font></code><br>
+(2) <code><font color="#0000AA"> svn diff fichier_1 ... </font></code>
+<ul>
+Affiche la différence entre la dernière révision de l'archive et la
+   version locale pour
+<ul>
+   (1) tous les fichiers du répertoire courant et de ses sous-répertoires<br>
+   (2) les fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+</ul>
+<br>
+
+(1) <code><font color="#0000AA"> svn diff -r numero </font></code><br>
+(2) <code><font color="#0000AA"> svn diff -r numero fichier_1 ...</font></code>
+<ul>Affiche la différence entre la révision considérée (données par le
+   numéro ou la marque) de l'archive et la version locale pour
+<ul>
+(1) tous les fichiers du répertoire courant et de ses sous-répertoires<br>
+(2) les fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+</ul>
+<br>
+
+
+(1) <code><font color="#0000AA"> svn diff -r numero1:numero2 </font></code><br>
+(2) <code><font color="#0000AA"> svn diff -r numero1:numero2 fichier_1 ...
+</font></code>
+<ul>
+Affiche la différence entre les deux révisions considérées (données par le
+   numéro ou la marque) de l'archive pour
+<ul>
+(1) tous les fichiers du répertoire courant et de ses sous-répertoires <br>
+(2) les fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+</ul>
+<br>
+
+
+<code><font color="#0000AA"> svn resolved fichier_1 fichier_2 ... </font></code>
+<ul>
+Si <code><font color="#0000AA">"svn update"</font></code>
+laisse des conflits, on ne peut plus utiliser
+<code><font color="#0000AA">"svn commit"</font></code>
+avant d'avoir résolu les conflits puis confirmé à
+subversion que les conflits sont résolus, avec
+<code><font color="#0000AA">"svn resolved"</font></code>.
+</ul>
+
+<h4> Récupération d'anciennes versions avec svn </h4>
+
+(1) <code><font color="#0000AA">svn revert . -R </font></code><br>
+(2) <code><font color="#0000AA">svn revert fichier_1 ...</font></code>
+<ul>
+   Récupère les dernières révisions des fichiers de l'archive en
+   écrasant les versions locales pour
+<ul>
+(1) tous les fichiers du répertoire courant et de ses sous-répertoires
+<br>
+(2) les fichiers ou répertoires (et leurs sous-répertoires) fichier_1, ...
+</ul>
+</ul>
+</br>
+
+<br/>
+<br/>
+
+<p>
+Voir <a href="http://svnbook.red-bean.com/">ce livre</a> pour plus d'information.
+</p>
+
+<br/>
+<br/>
+<br/>
+
+
+		</div>
+	</div> <!-- container -->
+	<br/><br/><br/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--script src="../style/js/jquery.js"></script-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../style/js/bootstrap.min.js"></script>
+  </body>
+</html>
